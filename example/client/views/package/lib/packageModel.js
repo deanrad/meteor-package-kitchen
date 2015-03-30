@@ -33,8 +33,8 @@ var packageModel = new worksheet({
   // falsy or tinytest, eventually mocha, etc..
   testFramework: "tinytest",
 
-  // the code we want in our package
-  code: "/*global log*/\nlog = console.log.bind(console);",
+  // the code we want in our package, any variables to be exported defined w/o var
+  code: "/* global log:true */\nlog = console.log.bind(console);",
 
   // the test code to start us off with
   testCode: function () {

@@ -19,6 +19,6 @@ Package.onTest(function (api) {
  api.use("tinytest");
  api.use("deanius:new-package");
 
-api.addFiles("tests/index.js", ["server"]);
+api.addFiles("tests/index.js", ["client", "server"]);
 
 });
