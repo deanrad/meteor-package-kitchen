@@ -1,0 +1,36 @@
+<template name="packageJs">
+  Package.describe({
+    name: "{{ atmosphereName }}",
+    summary: "{{ package.summary }}",
+    version: "{{ package.version }}",
+    git: "{{ gitPath }}"
+  });
+
+  Package.onUse(function(api) {
+    api.versionsFrom("1.0.2");
+    api.use({{ packageDeps }});
+    {{> apiFiles }}
+    api.export("{{ export }}");
+  });
+
+  {{#if testFramework }}
+  Package.onTest(function (api) {
+    api.use("tinytest");
+    api.use("{{ atmosphereName }}");
+    {{> testFiles }}
+  });
+  {{/if}}
+
+</template>
+
+<template name="testFiles">
+  {{#each testFiles}}
+  api.addFiles("{{ path }}", {{ where }});
+  {{/each}}
+</template>
+
+<template name="apiFiles">
+  {{#each apiFiles}}
+  api.addFiles("{{ path }}", {{ where }});
+  {{/each}}
+</template>

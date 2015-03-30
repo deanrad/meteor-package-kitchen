@@ -1,0 +1,10 @@
+<template name="allFiles">
+  {{#each allFiles}}
+  <div class="">
+    {{ path }}
+  </div>
+  <pre>
+    {{{ contents }}}
+  </pre>
+  {{/each}}
+</template>
