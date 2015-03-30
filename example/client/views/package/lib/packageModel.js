@@ -1,4 +1,4 @@
-//TODO allow changes to this model through a GUI
+//TODO allow changes to this model through a GUI, separate user parts
 var packageModel = new worksheet({
   publisher: {
     atmosphere: {
@@ -15,14 +15,6 @@ var packageModel = new worksheet({
     version: "0.1.0",
   },
 
-  atmosphereName: function () {
-    return this.publisher.atmosphere.name + ":" + this.package.name;
-  },
-
-  gitPath: function () {
-    return "https://github.com/" + this.publisher.github.name + "/meteor-" + this.package.name;
-  },
-
   "export": "log",
 
   // client, server, or shared
@@ -36,16 +28,33 @@ var packageModel = new worksheet({
   // the code we want in our package, any variables to be exported defined w/o var
   code: "/* global log:true */\nlog = console.log.bind(console);",
 
+  atmosphereName: function () {
+    return this.publisher.atmosphere.name + ":" + this.package.name;
+  },
+
+  gitPath: function () {
+    return "https://github.com/" + this.publisher.github.name + "/meteor-" + this.package.name;
+  },
+
   // the test code to start us off with
   testCode: function () {
       return "Tinytest.add(\"" + this.atmosphereName + "\", function (test) {\n  test.equal(true, true);\n});";
+  },
+
+  fileLocation: function () {
+    if (this.packageType==="shared")
+      return '["client", "server"]';
+    else if (this.packageType==="client")
+      return '["client"]';
+    else if (this.packageType==="server")
+      return '["server"]';
   },
 
   apiFiles: function () {
     var folder = (this.packageType==="shared") ? "lib" : this.packageType;
     return [{
       path: folder + "/index.js",
-      where: whereArray(this.packageType),
+      where: this.fileLocation,
       template: Template.code
     }]
   },
@@ -54,7 +63,7 @@ var packageModel = new worksheet({
     if (! this.testFramework ) return [];
     return [{
       path: 'tests/index.js',
-      where: whereArray(this.packageType),
+      where: this.fileLocation,
       template: Template.testCode
     }];
   },
@@ -72,16 +81,15 @@ var packageModel = new worksheet({
     ].concat(this.apiFiles).concat(this.testFiles);
   },
 
+  allFilesRendered: function () {
+    return this.allFiles.map(function (file) {
+      return {
+        path: file.path,
+        contents: Blaze.toHTMLWithData(file.template, packageModel)
+      };
+    });
+  }
 });
-
-function whereArray (packageType) {
-  if (packageType==="shared")
-    return '["client", "server"]';
-  else if (packageType==="client")
-    return '["client"]';
-  else if (packageType==="server")
-    return '["server"]';
-}
 
 
 this.packageModel = packageModel;
