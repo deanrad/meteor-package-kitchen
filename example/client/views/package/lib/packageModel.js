@@ -44,7 +44,7 @@ var packageModel = new Recipe({
       if(this.testFramework == "tinytest")
         return "Tinytest.add(\"" + this.atmosphereName + "\", function (test) {\n  test.equal(true, true);\n});";
       if(this.testFramework == "mocha")
-        return "describe('" + this.atmosphereName + "', function () {\n  it('should be awesome', function (done) {\n  });\n});"
+        return "describe('" + this.atmosphereName + "', function () {\n  it('should be awesome', function (done) {\n    assert.equal(1,2);\n  });\n});"
   },
 
   fileLocation: function () {
