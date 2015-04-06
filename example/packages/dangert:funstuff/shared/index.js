@@ -1,0 +1,1 @@
+funstuff = function() { console.log("yo this is fun"); }

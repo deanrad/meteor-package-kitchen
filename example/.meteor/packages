@@ -7,7 +7,7 @@ iron:router
 deanius:worksheet
 
 # the generated package
-deanius:new-package
+dangert:funstuff
 
 # utilities
 udondan:jszip

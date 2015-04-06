@@ -1,14 +1,6 @@
-Template.allFiles.helpers({
-  contents: function () {
-    return Blaze.toHTMLWithData(this.template, packageModel);
-  },
-  isMarkdown: function () {
-    return this.path.match(/.md$/);
-  }
-});
-
 Template.package.events({
   "click .savePackage" : updatePackage,
+  "change input" : updatePackage,
   "click a.download" : function (e) {
     zipPackage()
   }
@@ -32,6 +24,7 @@ function updatePackage () {
     version: "0.1.0"
   };
 
+  packageModel.packageType = $("input:checked[name=scope]").val();
   packageModel.code = $("#code").val();
   packageModel.export = $("[name=export]").val();
 }

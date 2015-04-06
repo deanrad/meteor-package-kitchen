@@ -2,7 +2,7 @@ body{padding-left: 10px;}
 .file { border: 1px solid black; margin-bottom: 15px; margin-left: 15px;}
 .path { }
 .code { background-color: #eee;}
-.package-def input[type=text] { width: 300px; }
-.package-def input[type=radio] { width: 30px; }
+.packageDef input[type=text] { width: 300px; }
+.packageDef input[type=radio] { width: 30px; }
 a.download{ }
 div.download{ }

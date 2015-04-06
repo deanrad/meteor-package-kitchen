@@ -1,10 +1,11 @@
 <template name="allFiles">
+<div class="allFiles">
   <hr>
   <div class="download">
     Want to <a class="download" href="#">download</a> ? <i>(YMMV)</i>
   </div>
   <hr>
-  {{#each allFiles}}
+  {{#each allFilesRendered}}
 
     <div class="path">
       {{ path }}
@@ -13,4 +14,5 @@
     <pre class="file code">{{{ contents }}}</pre>
 
   {{/each}}
+</div>
 </template>

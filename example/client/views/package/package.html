@@ -1,38 +1,49 @@
 <template name="package">
-  <div class="">
+  <div class="packageDef">
 
-  <h3>Let's write that package!</h3>
+  <h3>Let's cook up a package!</h3>
 
-  <form class="package-def" action="#">
+  <form action="#">
     On Atmosphere, you are:<br>
     <input type="text" name="atmosphereName" value="" placeholder="Your Meteor Developer Account name">
+
     <br>
     On GitHub, you are:<br>
     <input type="text" name="githubName" value="" placeholder="Your Github account name">
+
     <br>
+    What will you name this new-fangled thing?<br>
+    <input type="text" name="packageName" placeholder="my-new-thing"><br>
+
+
+    <br>
+    Does this package enhance the client, server, or is it a shared package? <br>
+    <label for="scope1">Shared</label>
+    <input type="radio" name="scope" id="scope1" value="shared" checked="1">
+    <label for="scope2">Client</label>
+    <input type="radio" name="scope" id="scope2" value="client">
+    <label for="scope3">Server</label>
+    <input type="radio" name="scope" id="scope3" value="server">
+
+    <!--
     <br>
     How are you with people knowing about this ? <br>
-
-
     <label for="privacy1">Share : Share with the people!</label>
     <input type="radio" name="privacy" id="privacy1" value="1" checked="1"><br>
     <label for="privacy2">Private : Keep it on the DL <i>(Sssshh)</i></label>
     <input type="radio" name="privacy" id="privacy2" value="0"><br>
-
+-->
     <br>
-
     What code do you want this package to include ?<br>
     <textarea id="code" rows="10" cols="72" placeholder=""></textarea>
+
     <br>
+    Does it export any vars to the global scope?<br>
+    <input type="text" name="export" value=""><br>
 
-
+    <br>
     How would you summarize the brilliance of the above?<br>
     <input type="text" name="summary" placeholder="What does it do for you in 1 sentence?"><br>
-
-    <br>
-
-    What will you name this new-fangled thing?<br>
-    <input type="text" name="packageName" placeholder="my-new-thing"><br>
 
     <br>
     Testing Strategy?<br>
@@ -43,9 +54,6 @@
     <label for="test3">None : <i>"Danger"</i> is my middle name. </label>
     <input type="radio" name="test" id="test3" value=""><br>
 
-    <br>
-    Does it export any vars to the global scope?<br>
-    <input type="text" name="export" value=""><br>
 
     <br>
     Are you ready ? Cuz it's already been written for you below.. If not, click
