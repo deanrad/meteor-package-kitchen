@@ -1,7 +1,3 @@
-UI.registerHelper('equals', function(a, b) {
-  return a == b; // == intentional
-});
-
 Template.allFiles.helpers({
   contents: function () {
     return Blaze.toHTMLWithData(this.template, packageModel);
@@ -9,7 +5,7 @@ Template.allFiles.helpers({
   isMarkdown: function () {
     return this.path.match(/.md$/);
   }
-})
+});
 
 Template.package.events({
   "click .savePackage" : updatePackage,

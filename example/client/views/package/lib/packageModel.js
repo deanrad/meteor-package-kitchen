@@ -61,6 +61,7 @@ var packageModel = new Recipe({
     return [{
       path: folder + "/index.js",
       where: this.fileLocation,
+      contents: this.code,
       template: Template.code
     }]
   },
@@ -70,7 +71,8 @@ var packageModel = new Recipe({
     return [{
       path: 'tests/index.js',
       where: this.fileLocation,
-      template: Template.testCode
+      contents: this.testCode,
+      template: Template.code
     }];
   },
 
@@ -93,7 +95,7 @@ var packageModel = new Recipe({
     return this.allFiles.map(function (file) {
       return {
         path: file.path,
-        contents: Blaze.toHTMLWithData(file.template, packageModel)
+        contents: file.contents || Blaze.toHTMLWithData(file.template, packageModel)
       };
     });
   }
