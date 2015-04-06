@@ -1,5 +1,8 @@
+//try this renaming out
+var Recipe = worksheet;
+
 //TODO allow changes to this model through a GUI, separate user parts
-var packageModel = new worksheet({
+var packageModel = new Recipe({
   publisher: {
     atmosphere: {
       name: "deanius"
@@ -38,7 +41,10 @@ var packageModel = new worksheet({
 
   // the test code to start us off with
   testCode: function () {
-      return "Tinytest.add(\"" + this.atmosphereName + "\", function (test) {\n  test.equal(true, true);\n});";
+      if(this.testFramework == "tinytest")
+        return "Tinytest.add(\"" + this.atmosphereName + "\", function (test) {\n  test.equal(true, true);\n});";
+      if(this.testFramework == "mocha")
+        return "describe('" + this.atmosphereName + "', function () {\n  it('should be awesome', function (done) {\n  });\n});"
   },
 
   fileLocation: function () {
@@ -71,14 +77,16 @@ var packageModel = new worksheet({
   allFiles: function () {
     return [
       {
-        path: "package.js",
-        template: Template.packageJs
-      },
-      {
         path: "README.md",
         template: Template.readme
+      },
+      {
+        path: "package.js",
+        template: Template.packageJs
       }
-    ].concat(this.apiFiles).concat(this.testFiles);
+    ]
+    .concat(this.apiFiles)
+    .concat(this.testFiles);
   },
 
   allFilesRendered: function () {

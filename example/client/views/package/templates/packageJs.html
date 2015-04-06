@@ -1,36 +1,29 @@
-<template name="packageJs">
-  Package.describe({
-    name: "{{ atmosphereName }}",
-    summary: "{{ package.summary }}",
-    version: "{{ package.version }}",
-    git: "{{ gitPath }}"
-  });
+<template name="packageJs">Package.describe({
+  name: "{{ atmosphereName }}",
+  summary: "{{ package.summary }}",
+  version: "{{ package.version }}",
+  git: "{{ gitPath }}"
+});
 
-  Package.onUse(function(api) {
-    api.versionsFrom("1.0.2");
-    api.use({{ packageDeps }});
-    {{> apiFiles }}
-    api.export("{{ export }}");
-  });
+Package.onUse(function(api) {
+  api.versionsFrom("1.0.2");
+  api.use({{ packageDeps }});
+  {{> apiFiles }}
+  api.export("{{ export }}");
+});
 
-  {{#if testFramework }}
-  Package.onTest(function (api) {
-    api.use("tinytest");
-    api.use("{{ atmosphereName }}");
-    {{> testFiles }}
-  });
-  {{/if}}
+{{> Template.dynamic template=testFramework }}
 
 </template>
 
 <template name="testFiles">
-  {{#each testFiles}}
+{{#each testFiles}}
   api.addFiles("{{ path }}", {{ where }});
-  {{/each}}
+{{/each}}
 </template>
 
 <template name="apiFiles">
-  {{#each apiFiles}}
+{{#each apiFiles}}
   api.addFiles("{{ path }}", {{ where }});
-  {{/each}}
+{{/each}}
 </template>

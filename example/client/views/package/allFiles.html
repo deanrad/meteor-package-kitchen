@@ -1,10 +1,20 @@
 <template name="allFiles">
-  {{#each allFiles}}
-  <div class="">
-    {{ path }}
+  <hr>
+  <div class="download">
+    Want to <a class="download" href="#">download</a> ?
   </div>
-  <pre>
-    {{{ contents }}}
-  </pre>
+  <hr>
+  {{#each allFiles}}
+
+    <div class="path">
+      {{ path }}
+    </div>
+
+    {{#if isMarkdown }}
+    <div class="file">{{#markdown}}{{ contents }}{{/markdown}}</div>
+    {{else}}
+    <pre class="file code">{{{ contents }}}</pre>
+    {{/if}}
+
   {{/each}}
 </template>

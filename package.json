@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "start": "cd example; meteor",
+    "meteor-add": "cd example; meteor add"
+  }
+}

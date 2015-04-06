@@ -1,1 +1,7 @@
-pre { border: 1px solid black; background-color: #ddd;}
+.file { border: 1px solid black; margin-bottom: 15px; margin-left: 15px;}
+.path { }
+.code { background-color: #eee;}
+.package-def input[type=text] { width: 300px; }
+.package-def input[type=radio] { width: 30px; }
+a.download{ }
+div.download{ }
