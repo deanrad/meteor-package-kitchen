@@ -1,3 +1,5 @@
+var updatePackage = _.debounce(_updatePackage, 100);
+
 Template.package.events({
   "click .savePackage" : updatePackage,
   "change input" : updatePackage,
@@ -8,8 +10,20 @@ Template.allFiles.events({
     zipPackage()
   }
 });
+Template.package.onRendered(function () {
+  //Tracker.autorun(function () {
+    $("[name=atmosphereName]").val( SessionAmplify.get("atmosphereName"));
+    $("[name=githubName]").val( SessionAmplify.get("githubName"));
+  //});
+});
 
-function updatePackage () {
+
+function _updatePackage () {
+  Meteor.defer(function () {
+    SessionAmplify.set("atmosphereName", $("[name=atmosphereName]").val());
+    SessionAmplify.set("githubName", $("[name=githubName]").val());
+  });
+
   packageModel.publisher = {
     atmosphere: {
       name: $("[name=atmosphereName]").val()
