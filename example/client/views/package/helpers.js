@@ -1,10 +1,13 @@
 Template.package.events({
   "click .savePackage" : updatePackage,
   "change input" : updatePackage,
-  "click a.download" : function (e) {
+  "keyup input" : updatePackage
+});
+Template.allFiles.events({
+  "click .download" : function (e) {
     zipPackage()
   }
-})
+});
 
 function updatePackage () {
   packageModel.publisher = {

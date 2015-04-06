@@ -1,5 +1,5 @@
 if (Meteor.isClient) {
-  Router.route("package", {
+  Router.route("layout", {
     path: "/",
     data: packageModel
   })

@@ -1,9 +1,8 @@
 <template name="allFiles">
-<div class="allFiles">
+<div class="allFiles col-md-6">
   <hr>
-  <div class="download">
-    Want to <a class="download" href="#">download</a> ? <i>(YMMV)</i>
-  </div>
+  <button type="button" class="btn btn-primary download">Download Package (ZIP)</button>
+
   <hr>
   {{#each allFilesRendered}}
 
@@ -11,7 +10,7 @@
       {{ path }}
     </div>
 
-    <pre class="file code">{{{ contents }}}</pre>
+    <pre>{{{ contents }}}</pre>
 
   {{/each}}
 </div>

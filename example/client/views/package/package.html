@@ -1,7 +1,21 @@
 <template name="package">
-  <div class="packageDef">
+  <div class="packageDef col-md-6">
 
   <h3>Let's cook up a package!</h3>
+
+  <p>
+    You've got the code in mind you want to package, right?
+    OK, hold your horses, we'll have you ready in just a second.
+    Let us guide you through the basic questions, and watch your
+    package get written Meteor-style.
+    <br>
+    When you're done:
+    <ol>
+      <li>Download it as a zip</li>
+      <li>Unzip it to the <code>packages/</code> dir of an app</li>
+      <li><code>meteor add you:your-package</code></li>
+    </ol>
+  </p>
 
   <form action="#">
     On Atmosphere, you are:<br>
@@ -54,16 +68,6 @@
     <label for="test3">None : <i>"Danger"</i> is my middle name. </label>
     <input type="radio" name="test" id="test3" value=""><br>
 
-
-    <br>
-    Are you ready ? Cuz it's already been written for you below.. If not, click
-    the Save Package button.
-
-    <button type="button" class="btn btn-primary savePackage">Save Package</button>
   </form>
-  <div id="source">
-    {{> allFiles }}
-  </div>
-
 </div>
 </template>
