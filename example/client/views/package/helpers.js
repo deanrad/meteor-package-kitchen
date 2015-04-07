@@ -11,6 +11,8 @@ Template.package.events({
 Template.package.onRendered(function () {
   $("[name=atmosphereName]").val( SessionAmplify.get("atmosphereName"));
   $("[name=githubName]").val( SessionAmplify.get("githubName"));
+  $("[name=code]").val(packageModel.code);
+  $("[name=export]").val(packageModel.export);
 });
 
 Template.allFiles.events({
@@ -34,15 +36,15 @@ function _updatePackage () {
   packageModel.packageType = $("input:checked[name=scope]").val();
 
   packageModel.testFramework = $("input:checked[name=testFramework]").val();
-  packageModel.code = $("#code").val();
+  packageModel.code = $("[name=code]").val();
 }
 
 function suggestExports (e) {
-  if (!$("#code").val()){
+  if (!$("[name=code]").val()){
     $("[name=export]").val("");
     return;
   }
-  if (!$("[name=export]").val()) {
-    $("[name=export]").val(packageModel.exportSuggestion);
-  }
+  //if (!$("[name=export]").val()) {
+  $("[name=export]").val(packageModel.exportSuggestion);
+  //}
 }

@@ -27,9 +27,13 @@
 
     <br>
     What will you name this new-fangled thing?<br>
-    <input type="text" name="packageName" placeholder="my-new-thing"><br>
+    <input type="text" name="packageName" placeholder="my-new-thing">
 
+    <br>
+    What will it do for users who install it?<br>
+    <input type="text" name="summary" placeholder="1 sentence summary">
 
+    <br>
     <br>
     Does this package enhance the client, server, or is it a shared package? <br>
     <label for="scope1">Shared</label>
@@ -49,15 +53,11 @@
 -->
     <br>
     What code do you want this package to include ?<br>
-    <textarea id="code" rows="10" cols="72" placeholder=""></textarea>
+    <textarea id="code" name="code" rows="10" cols="72" placeholder=""></textarea>
 
     <br>
     Does it export any vars to the global scope?<br>
     <input type="text" name="export" value=""><br>
-
-    <br>
-    How would you summarize the brilliance of the above?<br>
-    <input type="text" name="summary" placeholder="What does it do for you in 1 sentence?"><br>
 
     <br>
     Testing Strategy?<br>
