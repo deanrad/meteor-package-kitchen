@@ -28,9 +28,9 @@ var packageModel = new Recipe({
   // the test code to start us off with
   testCode: function () {
       if(this.testFramework == "tinytest")
-        return "Tinytest.add(\"" + this.fullPackageName + "\", function (test) {\n  test.equal(true, true);\n});";
+        return "Tinytest.add(\"" + this.packageName + "\", function (test) {\n  test.equal(true, true);\n});";
       if(this.testFramework == "mocha")
-        return "describe('" + this.fullPackageName + "', function () {\n  it('should be awesome', function (done) {\n    assert.equal(1,2);\n  });\n});"
+        return "describe('" + this.packageName + "', function () {\n  it('should be awesome', function (done) {\n    assert.equal(1,2);\n  });\n});"
   },
 
   fileLocation: function () {

@@ -2,7 +2,6 @@ var updatePackage = _.debounce(_updatePackage, 50);
 
 Template.package.events({
   "click .savePackage" : updatePackage,
-  "change input" : updatePackage,
   "keyup input" : updatePackage,
   "keyup textarea" : updatePackage,
   "keyup #code" : suggestExports
