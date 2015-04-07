@@ -3,48 +3,34 @@ var Recipe = worksheet;
 
 //TODO allow changes to this model through a GUI, separate user parts
 var packageModel = new Recipe({
-  publisher: {
-    atmosphere: {
-      name: "deanius"
-    },
-    github: {
-      name: "chicagogrooves"
-    }
-  },
+  atmosphereName: "deanius",
+  githubName: "chicagogrooves",
+  packageName: "new-package",
+  version: "0.1.0",
 
-  package: {
-    name: "new-package",
-    summary: "Description of package amazingness.",
-    version: "0.1.0",
-  },
-
+  summary: "Description of package amazingness",
   "export": "log",
 
-  // client, server, or shared
-  packageType: "shared",
-
+  packageType: "shared", // client, server, or shared
   packageDeps: '["tracker", "meteor", "ddp", "ejson"]',
 
-  // falsy or tinytest, eventually mocha, etc..
-  testFramework: "tinytest",
-
-  // the code we want in our package, any variables to be exported defined w/o var
+  testFramework: "tinytest", // null, tinytest, mocha
   code: "/* global log:true */\nlog = console.log.bind(console);",
 
-  atmosphereName: function () {
-    return this.publisher.atmosphere.name + ":" + this.package.name;
+  fullPackageName: function () {
+    return this.atmosphereName + ":" + this.packageName;
   },
 
   gitPath: function () {
-    return "https://github.com/" + this.publisher.github.name + "/meteor-" + this.package.name;
+    return "https://github.com/" + this.githubName + "/meteor-" + this.packageName;
   },
 
   // the test code to start us off with
   testCode: function () {
       if(this.testFramework == "tinytest")
-        return "Tinytest.add(\"" + this.atmosphereName + "\", function (test) {\n  test.equal(true, true);\n});";
+        return "Tinytest.add(\"" + this.fullPackageName + "\", function (test) {\n  test.equal(true, true);\n});";
       if(this.testFramework == "mocha")
-        return "describe('" + this.atmosphereName + "', function () {\n  it('should be awesome', function (done) {\n    assert.equal(1,2);\n  });\n});"
+        return "describe('" + this.fullPackageName + "', function () {\n  it('should be awesome', function (done) {\n    assert.equal(1,2);\n  });\n});"
   },
 
   fileLocation: function () {
@@ -97,8 +83,12 @@ var packageModel = new Recipe({
         contents: file.contents || Blaze.toHTMLWithData(file.template, packageModel)
       };
     });
+  },
+
+  exportSuggestion: function () {
+    var match = this.code.match(/^(\w+)\s?=/m);
+    return match ? match[1] : "";
   }
 });
-
 
 this.packageModel = packageModel;
