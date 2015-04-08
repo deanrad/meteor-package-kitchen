@@ -9,10 +9,12 @@ Template.package.events({
 });
 
 Template.package.onRendered(function () {
-  $("[name=atmosphereName]").val( SessionAmplify.get("atmosphereName"));
-  $("[name=githubName]").val( SessionAmplify.get("githubName"));
-  $("[name=code]").val(packageModel.code);
-  $("[name=export]").val(packageModel.export);
+  $("[name=atmosphereName]").val(SessionAmplify.get("atmosphereName"));
+  $("[name=githubName]").val(SessionAmplify.get("githubName"));
+  $("[name=packageName]").val(SessionAmplify.get("packageName"));
+  $("[name=summary]").val(SessionAmplify.get("summary") || packageModel.summary);
+  $("[name=code]").val(SessionAmplify.get("code") || packageModel.code);
+  $("[name=export]").val(SessionAmplify.get("export") || packageModel.export);
 });
 
 Template.allFiles.events({
@@ -25,6 +27,9 @@ function _updatePackage () {
   Meteor.defer(function () {
     SessionAmplify.set("atmosphereName", $("[name=atmosphereName]").val());
     SessionAmplify.set("githubName", $("[name=githubName]").val());
+    SessionAmplify.set("packageName", $("[name=packageName]").val());
+    SessionAmplify.set("summary", $("[name=summary]").val());
+    SessionAmplify.set("code", $("[name=code]").val());
   });
 
   packageModel.atmosphereName = $("[name=atmosphereName]").val();
@@ -32,11 +37,11 @@ function _updatePackage () {
   packageModel.packageName = $("input[name=packageName]").val();
 
   packageModel.summary = $("input[name=summary]").val(),
-  packageModel.export = $("[name=export]").val();
-  packageModel.packageType = $("input:checked[name=scope]").val();
-
-  packageModel.testFramework = $("input:checked[name=testFramework]").val();
   packageModel.code = $("[name=code]").val();
+  packageModel.export = $("[name=export]").val();
+
+  packageModel.packageType = $("input:checked[name=packageType]").val();
+  packageModel.testFramework = $("input:checked[name=testFramework]").val();
 }
 
 function suggestExports (e) {

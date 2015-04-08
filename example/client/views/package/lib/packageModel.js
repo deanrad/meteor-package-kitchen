@@ -12,7 +12,7 @@ var packageModel = new Recipe({
   "export": "log",
 
   packageType: "shared", // client, server, or shared
-  packageDeps: '["tracker", "meteor", "ddp", "ejson"]',
+  packageDeps: '["meteor", "ddp", "jquery"]',
 
   testFramework: "tinytest", // null, tinytest, mocha
   code: "/* global log:true */\nlog = console.log.bind(console);",

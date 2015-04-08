@@ -19,15 +19,21 @@
 
   <form action="#">
     On Atmosphere, you are:<br>
-    <input type="text" name="atmosphereName" value="" placeholder="Your Meteor Developer Account name">
+    <input type="text" name="atmosphereName" value=""
+      autocapitalize="off" autocorrect="off"
+      placeholder="Your Meteor Developer Account name">
 
     <br>
     On GitHub, you are:<br>
-    <input type="text" name="githubName" value="" placeholder="Your Github account name">
+    <input type="text" name="githubName" value=""
+      autocapitalize="off" autocorrect="off"
+      placeholder="Your Github account name">
 
     <br>
     What will you name this new-fangled thing?<br>
-    <input type="text" name="packageName" placeholder="new-thing">
+    <input type="text" name="packageName"
+      autocapitalize="off" autocorrect="off"
+      placeholder="new-thing">
 
     <br>
     What will it do for users who install it?<br>
@@ -36,12 +42,12 @@
     <br>
     <br>
     Does this package enhance the client, server, or is it a shared package? <br>
-    <label for="scope1">Shared</label>
-    <input type="radio" name="scope" id="scope1" value="shared" checked="1">
-    <label for="scope2">Client</label>
-    <input type="radio" name="scope" id="scope2" value="client">
-    <label for="scope3">Server</label>
-    <input type="radio" name="scope" id="scope3" value="server">
+    <label for="packageType1">Shared</label>
+    <input type="radio" name="packageType" id="packageType1" value="shared" checked="1">
+    <label for="packageType2">Client</label>
+    <input type="radio" name="packageType" id="packageType2" value="client">
+    <label for="packageType3">Server</label>
+    <input type="radio" name="packageType" id="packageType3" value="server">
 
     <!--
     <br>
@@ -53,11 +59,14 @@
 -->
     <br>
     What code do you want this package to include ?<br>
-    <textarea id="code" name="code" rows="10" cols="72" placeholder=""></textarea>
+    <textarea id="code" name="code" rows="10" cols="72"
+      autocapitalize="off" autocorrect="off"
+      placeholder=""></textarea>
 
     <br>
-    Does it export any vars to the global scope?<br>
-    <input type="text" name="export" value=""><br>
+    Does it export any vars to the global packageType?<br>
+    <input type="text" name="export" value=""
+      autocapitalize="off" autocorrect="off"><br>
 
     <br>
     Testing Strategy?<br>
