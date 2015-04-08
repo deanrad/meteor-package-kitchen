@@ -12,7 +12,7 @@ Template.package.onRendered(function () {
   $("[name=atmosphereName]").val(SessionAmplify.get("atmosphereName"));
   $("[name=githubName]").val(SessionAmplify.get("githubName"));
   $("[name=packageName]").val(SessionAmplify.get("packageName"));
-  $("[name=summary]").val(SessionAmplify.get("summary") || packageModel.summary);
+  $("[name=summary]").val(SessionAmplify.get("summary"));
   $("[name=code]").val(SessionAmplify.get("code") || packageModel.code);
   $("[name=export]").val(SessionAmplify.get("export") || packageModel.export);
 });
