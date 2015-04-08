@@ -1,6 +1,7 @@
 {
   "scripts": {
     "start": "cd example; meteor",
-    "meteor-add": "cd example; meteor add"
+    "meteor-add": "cd example; meteor add",
+    "deploy": "cd example; meteor deploy package-kitchen.meteor.com"
   }
 }
