@@ -13,6 +13,7 @@ Template.package.onRendered(function () {
   $("[name=githubName]").val(SessionAmplify.get("githubName"));
   $("[name=packageName]").val(SessionAmplify.get("packageName"));
   $("[name=summary]").val(SessionAmplify.get("summary"));
+  $("[name=demoUrl]").val(SessionAmplify.get("demoUrl"));
   $("[name=code]").val(SessionAmplify.get("code") || packageModel.code);
   $("[name=export]").val(SessionAmplify.get("export") || packageModel.export);
 });
@@ -22,12 +23,18 @@ Template.allFiles.events({
     zipPackage()
   }
 });
+Template.allFiles.helpers({
+  "isMarkdown" : function () {
+    return this.path.match(/\.md$/);
+  }
+});
 
 function _updatePackage () {
   Meteor.defer(function () {
     SessionAmplify.set("atmosphereName", $("[name=atmosphereName]").val());
     SessionAmplify.set("githubName", $("[name=githubName]").val());
     SessionAmplify.set("packageName", $("[name=packageName]").val());
+    SessionAmplify.set("demoUrl", $("[name=demoUrl]").val());
     SessionAmplify.set("summary", $("[name=summary]").val());
     SessionAmplify.set("code", $("[name=code]").val());
   });
@@ -35,6 +42,7 @@ function _updatePackage () {
   packageModel.atmosphereName = $("[name=atmosphereName]").val();
   packageModel.githubName = $("[name=githubName]").val();
   packageModel.packageName = $("input[name=packageName]").val();
+  packageModel.demoUrl = $("input[name=demoUrl]").val();
 
   packageModel.summary = $("input[name=summary]").val(),
   packageModel.code = $("[name=code]").val();

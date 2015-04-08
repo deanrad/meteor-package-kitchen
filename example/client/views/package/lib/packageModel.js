@@ -7,6 +7,7 @@ var packageModel = new Recipe({
   githubName: "chicagogrooves",
   packageName: "new-package",
   version: "0.1.0",
+  demoUrl: "",
 
   summary: "Description of package amazingness",
   "export": "log",

@@ -10,7 +10,12 @@
       {{ path }}
     </div>
 
-    <pre>{{{ contents }}}</pre>
+
+    {{#if isMarkdown}}
+      <div class="markdown file">{{#markdown}}{{{contents}}}{{/markdown}}</div>
+    {{else}}
+      <pre class="file">{{{ contents }}}</pre>
+    {{/if}}
 
   {{/each}}
 </div>
