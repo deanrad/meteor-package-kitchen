@@ -19,9 +19,9 @@ var packageModel = new Recipe({
   code: "/* global log:true */\nlog = console.log.bind(console);",
   transpiler: "",
   extension: function () {
-    if (transpiler === "coffeescript")
+    if (this.transpiler === "coffeescript")
       return ".coffee";
-    if (transpiler === "es6")
+    if (this.transpiler === "es6")
       return ".next.js";
 
     return ".js";
