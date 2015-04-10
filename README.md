@@ -1,11 +1,9 @@
-# deanius:new-package
+# deanius:package-kitchen
 
-Description of package amazingness.
+Contains a demo site in `/example`, which is the source for http://package-kitchen.meteor.com
 
-## Installation
+## Usage
 
-```
-  meteor add deanius:new-package
-```
+Go to http://package-kitchen.meteor.com, and input the specifics of the package you want to build, following the installation instructions on the site.
 
-## Description
+**There is no need to install this package at the moment**
