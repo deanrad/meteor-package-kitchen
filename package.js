@@ -1,7 +1,7 @@
 Package.describe({
  name: "deanius:package-kitchen",
  summary: "Source for http://package-kitchen.meteor.com - not for installation",
- version: "1.0.1",
+ version: "1.1.0",
  git: "https://github.com/chicagogrooves/meteor-package-kitchen",
  debugOnly: true
 });
@@ -20,10 +20,13 @@ Package.onUse(function(api) {
   api.addFiles("client/templates/tinytest.html", ["client"]);
   api.addFiles("client/allFiles.html", ["client"]);
   api.addFiles("client/flair.html", ["client"]);
-  api.addFiles("client/layout.html", ["client"]);
+  api.addFiles("client/kitchen.html", ["client"]);
   api.addFiles("client/package.html", ["client"]);
   api.addFiles("client/packageModel.js", ["client"]);
   api.addFiles("client/routes.js", ["client"])
   api.addFiles("client/zip.js", ["client"]);
   api.addFiles("client/helpers.js", ["client"]);
+
+  // we don't actually need to export, globals will leak!!
+  //api.exports("packageModel");
 });
