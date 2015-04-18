@@ -3,16 +3,12 @@
 meteor-platform
 iron:router
 
-# dependency flow
-deanius:worksheet
-
 # the generated package
+deanius:package-kitchen
 
 # utilities
-udondan:jszip
-dcsan:reactive-ace
 
 # uncategorized
-perak:markdown
 twbs:bootstrap
+perak:markdown
 mrt:session-amplify
