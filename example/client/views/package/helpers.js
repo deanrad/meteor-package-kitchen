@@ -16,6 +16,7 @@ Template.package.onRendered(function () {
   $("[name=demoUrl]").val(SessionAmplify.get("demoUrl"));
   $("[name=code]").val(SessionAmplify.get("code") || packageModel.code);
   $("[name=export]").val(SessionAmplify.get("export") || packageModel.export);
+  _updatePackage();
 });
 
 Template.allFiles.events({
