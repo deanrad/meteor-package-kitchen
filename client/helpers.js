@@ -16,13 +16,19 @@ Template.package.onRendered(function () {
   $("[name=demoUrl]").val(SessionAmplify.get("demoUrl"));
   $("[name=code]").val(SessionAmplify.get("code") || packageModel.code);
   $("[name=export]").val(SessionAmplify.get("export") || packageModel.export);
+
+  _updatePackage();
 });
 
-Template.allFiles.events({
+Template.kitchen.events({
   "click .download" : function (e) {
     zipPackage()
+  },
+  "click .saveToApp" : function (e) {
+    Meteor.promise("deanius:package-kitchen#saveToApp", packageModel.allFilesRendered);
   }
 });
+
 Template.allFiles.helpers({
   "isMarkdown" : function () {
     return this.path.match(/\.md$/);

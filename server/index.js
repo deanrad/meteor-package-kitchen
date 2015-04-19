@@ -1,2 +1,5 @@
-/* global log:true */
-env = console.log(process.env);
+Meteor.methods({
+  "deanius:package-kitchen#saveToApp" : function (allFiles) {
+    console.log(allFiles);
+  }
+})

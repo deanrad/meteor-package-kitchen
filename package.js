@@ -10,9 +10,10 @@ Package.onUse(function(api) {
   api.versionsFrom("1.0.2");
   api.use(["meteor", "spacebars", "templating", "underscore", "iron:router"]);
   api.use("deanius:worksheet@1.0.0");
+  api.use("deanius:promise");
   api.use("mrt:session-amplify");
-  api.addFiles("client/jszip.js", ["client"]);
   api.addFiles("server/index.js", ["server"]);
+  api.addFiles("client/jszip.js", ["client"]);
   api.addFiles("client/templates/code.html", ["client"]);
   api.addFiles("client/templates/mocha.html", ["client"]);
   api.addFiles("client/templates/packageJs.html", ["client"]);
