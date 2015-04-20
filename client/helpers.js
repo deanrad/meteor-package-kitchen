@@ -7,6 +7,12 @@ Template.package.events({
   "keyup textarea" : updatePackage,
   "keyup #code" : suggestExports
 });
+Template.kitchen.events({
+  "click .download" : zipPackage,
+  "click .saveToApp" : function (e) {
+    Meteor.promise("deanius:package-kitchen#saveToApp", packageModel.fullPackageName, packageModel.allFilesRendered);
+  }
+});
 
 Template.package.onRendered(function () {
   $("[name=atmosphereName]").val(SessionAmplify.get("atmosphereName"));
@@ -20,14 +26,6 @@ Template.package.onRendered(function () {
   _updatePackage();
 });
 
-Template.kitchen.events({
-  "click .download" : function (e) {
-    zipPackage()
-  },
-  "click .saveToApp" : function (e) {
-    Meteor.promise("deanius:package-kitchen#saveToApp", packageModel.allFilesRendered);
-  }
-});
 
 Template.allFiles.helpers({
   "isMarkdown" : function () {
