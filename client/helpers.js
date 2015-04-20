@@ -7,10 +7,17 @@ Template.package.events({
   "keyup textarea" : updatePackage,
   "keyup #code" : suggestExports
 });
+
 Template.kitchen.events({
   "click .download" : zipPackage,
   "click .saveToApp" : function (e) {
     Meteor.promise("deanius:package-kitchen#saveToApp", packageModel.fullPackageName, packageModel.allFilesRendered);
+  }
+});
+
+Template.allFiles.helpers({
+  "isMarkdown" : function () {
+    return this.path.match(/\.md$/);
   }
 });
 
@@ -24,13 +31,6 @@ Template.package.onRendered(function () {
   $("[name=export]").val(SessionAmplify.get("export") || packageModel.export);
 
   _updatePackage();
-});
-
-
-Template.allFiles.helpers({
-  "isMarkdown" : function () {
-    return this.path.match(/\.md$/);
-  }
 });
 
 function _updatePackage () {
@@ -62,7 +62,5 @@ function suggestExports (e) {
     $("[name=export]").val("");
     return;
   }
-  //if (!$("[name=export]").val()) {
   $("[name=export]").val(packageModel.exportSuggestion);
-  //}
 }
