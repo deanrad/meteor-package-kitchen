@@ -7,8 +7,7 @@ Package.describe({
 });
 
 Npm.depends({
-  "unzip": "0.1.11",
-  "streamifier": "0.1.1"
+  "mkdirp": "0.5.0"
 });
 
 Package.onUse(function(api) {
@@ -18,7 +17,7 @@ Package.onUse(function(api) {
   api.use("deanius:promise");
   api.use("mrt:session-amplify");
   api.addFiles("server/methods.js", ["server"]);
-  api.addFiles("shared/jszip.js", ["client", "server"]);
+  api.addFiles("client/jszip.js", ["client"]);
   api.addFiles("client/templates/code.html", ["client"]);
   api.addFiles("client/templates/mocha.html", ["client"]);
   api.addFiles("client/templates/packageJs.html", ["client"]);

@@ -41,6 +41,7 @@ function _updatePackage () {
     SessionAmplify.set("demoUrl", $("[name=demoUrl]").val());
     SessionAmplify.set("summary", $("[name=summary]").val());
     SessionAmplify.set("code", $("[name=code]").val());
+    SessionAmplify.set("export", $("[name=export]").val());
   });
 
   packageModel.atmosphereName = $("[name=atmosphereName]").val();
