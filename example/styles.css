@@ -1,9 +1,0 @@
-body{ padding-left: 10px; background-color: #dde}
-.file { border: 1px solid #444; margin-bottom: 15px; background-color: #eee;}
-.path { }
-.markdown { background-color: white;}
-.code { }
-.packageDef input[type=text] { width: 300px; }
-.packageDef input[type=radio] { width: 30px; }
-a.download{ }
-div.download{ }
