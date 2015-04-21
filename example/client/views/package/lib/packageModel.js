@@ -17,6 +17,15 @@ var packageModel = new Recipe({
 
   testFramework: "tinytest", // null, tinytest, mocha
   code: "/* global log:true */\nlog = console.log.bind(console);",
+  transpiler: "",
+  extension: function () {
+    if (this.transpiler === "coffeescript")
+      return ".coffee";
+    if (this.transpiler === "es6")
+      return ".next.js";
+
+    return ".js";
+  },
 
   fullPackageName: function () {
     return this.atmosphereName + ":" + this.packageName;
@@ -45,7 +54,7 @@ var packageModel = new Recipe({
 
   apiFiles: function () {
     return [{
-      path: this.packageType + "/index.js",
+      path: this.packageType + "/index" + this.extension,
       where: this.fileLocation,
       contents: this.code,
       template: Template.code
@@ -55,7 +64,7 @@ var packageModel = new Recipe({
   testFiles: function () {
     if (! this.testFramework ) return [];
     return [{
-      path: 'tests/' + this.packageType + '/index.js',
+      path: 'tests/' + this.packageType + '/index' + this.extension,
       where: this.fileLocation,
       contents: this.testCode,
       template: Template.code
