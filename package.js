@@ -18,7 +18,7 @@ Package.onUse(function(api) {
   api.use("mrt:session-amplify");
   // use it, and make its exports available in the app that includes us
   api.imply("perak:markdown");
-  
+
   api.addFiles("server/methods.js", ["server"]);
   api.addFiles("client/jszip.js", ["client"]);
   api.addFiles("client/templates/code.html", ["client"]);
