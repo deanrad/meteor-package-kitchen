@@ -1,7 +1,7 @@
 Package.describe({
  name: "deanius:package-kitchen",
  summary: "Source for http://package-kitchen.meteor.com - not for installation",
- version: "1.1.0",
+ version: "1.1.1",
  git: "https://github.com/chicagogrooves/meteor-package-kitchen",
  debugOnly: true
 });
@@ -13,7 +13,7 @@ Npm.depends({
 Package.onUse(function(api) {
   api.versionsFrom("1.0.2");
   api.use(["meteor", "spacebars", "templating", "underscore"]);
-  api.use("iron:router@1.0.6");
+  api.use("iron:router@1.0.0");
   api.use("deanius:worksheet@1.0.0");
   api.use("deanius:promise@2.0.4");
   api.use("mrt:session-amplify@0.1.0");
