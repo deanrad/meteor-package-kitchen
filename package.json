@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "cd example; meteor",
+    "start": "cd example; meteor --port 3141",
     "meteor-add": "cd example; meteor add",
     "deploy": "cd example; meteor deploy package-kitchen.meteor.com"
   }

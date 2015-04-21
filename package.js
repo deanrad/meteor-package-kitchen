@@ -12,12 +12,13 @@ Npm.depends({
 
 Package.onUse(function(api) {
   api.versionsFrom("1.0.2");
-  api.use(["meteor", "spacebars", "templating", "underscore", "iron:router"]);
+  api.use(["meteor", "spacebars", "templating", "underscore"]);
+  api.use("iron:router@1.0.6");
   api.use("deanius:worksheet@1.0.0");
-  api.use("deanius:promise");
-  api.use("mrt:session-amplify");
+  api.use("deanius:promise@2.0.4");
+  api.use("mrt:session-amplify@0.1.0");
   // use it, and make its exports available in the app that includes us
-  api.imply("perak:markdown");
+  api.imply("perak:markdown@1.0.4");
 
   api.addFiles("server/methods.js", ["server"]);
   api.addFiles("client/jszip.js", ["client"]);
