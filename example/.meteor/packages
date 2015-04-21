@@ -3,7 +3,7 @@
 meteor-platform
 iron:router
 
-# the generated package
+# the package generator, exposed at /kitchen
 deanius:package-kitchen
 
 # utilities

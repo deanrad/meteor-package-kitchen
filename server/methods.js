@@ -4,19 +4,27 @@ var mkdirp = Meteor.wrapAsync(Npm.require('mkdirp'));
 
 Meteor.methods({
   "deanius:package-kitchen#saveToApp" : function (packageName, allFilesRendered) {
-    console.log(allFilesRendered);
     // check - array of {path, contents}
     // check - make sure folder doesn't exist, or warn
+
+
+    var packageFolder = path.join(process.env.PWD, 'packages', packageName);
+
+    if (fs.existsSync(packageFolder) ||
+        fs.readFileSync(process.env.PWD+'/.meteor/packages', {encoding:'utf8'}).match(packageName)
+    ) {
+      throw new Meteor.Error("packageExists", "Refusing to overwrite existing package " + packageName);
+    }
+
+    //LEFTOFF - dont add package to .meteor/packages if it exists, either
 
     // make directories, files
     _.each(allFilesRendered, function (fileSpec) {
       var fileContents = fileSpec.contents,
           filePath = fileSpec.path,
-          fullFilePath = path.join(process.env.PWD, 'packages', packageName, filePath),
-          folderName = path.dirname(filePath),
-          folderPath = path.join(process.env.PWD, 'packages', packageName, folderName);
+          fullFilePath = path.join(packageFolder, filePath);
 
-      mkdirp(folderPath);
+      mkdirp(path.dirname(fullFilePath));
       fs.writeFileSync(fullFilePath, fileContents);
     });
 
