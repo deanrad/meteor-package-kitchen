@@ -2,6 +2,8 @@
   "scripts": {
     "start": "cd example; meteor --port 3141",
     "meteor-add": "cd example; meteor add",
-    "deploy": "cd example; meteor deploy package-kitchen.meteor.com"
+    "deploy": "cd example; meteor deploy package-kitchen.meteor.com",
+    "dev-mode": "ln -s ../.. example/packages/deanius\\:package-kitchen",
+    "release-mode": "rm -rf example/packages/deanius\\:package-kitchen"
   }
 }
