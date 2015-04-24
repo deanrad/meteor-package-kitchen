@@ -22,8 +22,19 @@ var packageModel = new Recipe({
     return this.atmosphereName + ":" + this.packageName;
   },
 
+  gitProject: function () {
+    return this.githubName + "/meteor-" + this.packageName;
+  },
+
   gitPath: function () {
-    return "https://github.com/" + this.githubName + "/meteor-" + this.packageName;
+    return "https://github.com/" + this.gitProject;
+  },
+
+  travisBadgeMarkdown: function () {
+    return "[![Build Status](https://secure.travis-ci.org/" +
+      this.gitProject +
+      ".png?branch=master)](https://travis-ci.org/" +
+      this.gitProject + ")"
   },
 
   // the test code to start us off with
@@ -74,7 +85,13 @@ var packageModel = new Recipe({
       }
     ]
     .concat(this.apiFiles)
-    .concat(this.testFiles);
+    .concat(this.testFiles)
+    .concat([
+      {
+        path: ".travis.yml",
+        template: Template.travis
+      }
+    ]);
   },
 
   allFilesRendered: function () {

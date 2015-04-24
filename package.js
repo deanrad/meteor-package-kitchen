@@ -26,6 +26,7 @@ Package.onUse(function(api) {
   api.addFiles("client/templates/mocha.html", ["client"]);
   api.addFiles("client/templates/packageJs.html", ["client"]);
   api.addFiles("client/templates/readme.html", ["client"]);
+  api.addFiles("client/templates/travis.html", ["client"]);
   api.addFiles("client/templates/tinytest.html", ["client"]);
   api.addFiles("client/allFiles.html", ["client"]);
   api.addFiles("client/flair.html", ["client"]);
