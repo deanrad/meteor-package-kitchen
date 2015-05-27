@@ -15,7 +15,7 @@ Step into the Package Kitchen to whip up your next Meteor package!
 
 Go to http://package-kitchen.meteor.com, and input the specifics of the package you want to build. You can then download a ZIP of your package, and  follow the installation instructions on the site.
 
-## In-App Usage
+## 1. Using to extend an Application you are currently building
 
 Add Package Kitchen to your application:
 
@@ -28,9 +28,15 @@ You will receive an error upon Save if:
   - There is already a local package by that name
   - The package name conflicts with one already listed in `.meteor/packages` (e.g. `iron:router`)
 
+## 2. Running as an Application Locally
+
+You can spin up the app (as it deployed on http://package-kitchen.meteor.com), by running `npm start`.
+or, if you're old school, `cd example; meteor`.
 
 ## Further Reference
 [The Full Meteor Docs on Packages](http://docs.meteor.com/#/full/packagedefinition)
+
+The last [Packages Tutorial](http://themeteorchef.com/recipes/writing-a-package/) you'll ever need, by [@TheMeteorChef](http://twitter.com/themeteorchef)
 
 ## Specifying Dependencies
 
