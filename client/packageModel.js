@@ -14,6 +14,7 @@ var packageModel = new Recipe({
 
   packageType: "shared", // client, server, or shared
   packageDeps: '["meteor", "ddp", "jquery"]',
+  npmDeps: [],
 
   testFramework: "tinytest", // null, tinytest, mocha
   code: "/* global log:true */\nlog = console.log.bind(console);",
@@ -28,6 +29,15 @@ var packageModel = new Recipe({
 
   gitPath: function () {
     return "https://github.com/" + this.gitProject;
+  },
+
+  npmDependencies: function () {
+    var npmBlock = this.npmDeps.reduce(function (all, name){ 
+      var version = "1.0.0"; //TODO look up version
+      all[name] = version;
+      return all;
+    }, {});
+    return JSON.stringify(npmBlock);
   },
 
   travisBadgeMarkdown: function () {
