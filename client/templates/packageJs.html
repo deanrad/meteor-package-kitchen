@@ -13,11 +13,7 @@ Package.onUse(function(api) {
 });
 
 {{#if npmDependencies}}
-  {{#if isReactivePromiseReady "npmDependencies"}}
-  Npm.depends({{npmDependencies}})
-  {{else}}
-  Npm.depends({"loading": true});
-  {{/if}}
+Npm.depends({{npmDependencies}});
 {{/if}}
 
 {{> Template.dynamic template=testFramework }}

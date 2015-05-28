@@ -13,7 +13,7 @@ Npm.depends({
 
 Package.onUse(function(api) {
   api.versionsFrom("1.0.2");
-  api.use(["meteor", "spacebars", "templating", "underscore"]);
+  api.use(["meteor", "spacebars", "templating", "underscore", "reactive-dict"]);
   api.use("iron:router@1.0.0");
   api.use("deanius:worksheet@1.0.0");
   api.use("deanius:promise@2.0.4");
@@ -42,4 +42,5 @@ Package.onUse(function(api) {
 
   // we don't actually need to export, globals will leak!!
   //api.exports("packageModel");
+  api.export("_npmVersions", "client");
 });

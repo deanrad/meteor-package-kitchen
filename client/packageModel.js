@@ -1,6 +1,9 @@
 //try this renaming out
 var Recipe = worksheet;
 
+_npmVersions = new ReactiveDict('npmVersions');
+window.npmVersions = _npmVersions;
+
 //TODO allow changes to this model through a GUI, separate user parts
 var packageModel = new Recipe({
   atmosphereName: "deanius",
@@ -14,7 +17,7 @@ var packageModel = new Recipe({
 
   packageType: "shared", // client, server, or shared
   packageDeps: '["meteor", "ddp", "jquery"]',
-  npmDeps: ["cheerio"],
+  npmDeps: ["cheerio", "latest-version"],
 
   testFramework: "tinytest", // null, tinytest, mocha
   code: "/* global log:true */\nlog = console.log.bind(console);",
@@ -31,18 +34,33 @@ var packageModel = new Recipe({
     return "https://github.com/" + this.gitProject;
   },
 
-  npmDependencies: function () {
+  npmVersions: function () {
     if(this.npmDeps.length === 0) return null;
+    if( Object.keys(_npmVersions.keys).length > 0) return _npmVersions;
 
-    var npmBlock = this.npmDeps.reduce(function (all, name){
-      var version = "latest"; //TODO look up version
+    this.npmDeps.map(function (name) {
+      _npmVersions.set(name, "latest");
+    });
+    return _npmVersions;
+  },
+
+  npmDependencies: function () {
+    var self = this;
+    if(self.npmDeps.length === 0) return null;
+
+    var npmBlock = self.npmDeps.reduce(function (all, name){
+      var version = self.npmVersions.get(name);
       all[name] = version;
       return all;
     }, {});
 
-    ReactivePromise.when("npmDependencies", Promise.resolve(2));
-
-    return JSON.stringify(npmBlock);
+    self.npmDeps.map(function (name){
+      Meteor.promise("deanius:package-kitchen#latest-version", name).then(function (version){
+        if (!version) return;
+        _npmVersions.set(name, version);
+      })
+    });
+    return JSON.stringify(npmBlock, null, 2);
   },
 
   travisBadgeMarkdown: function () {
