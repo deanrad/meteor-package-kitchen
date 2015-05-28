@@ -14,7 +14,7 @@ var packageModel = new Recipe({
 
   packageType: "shared", // client, server, or shared
   packageDeps: '["meteor", "ddp", "jquery"]',
-  npmDeps: [],
+  npmDeps: ["cheerio"],
 
   testFramework: "tinytest", // null, tinytest, mocha
   code: "/* global log:true */\nlog = console.log.bind(console);",
@@ -32,11 +32,16 @@ var packageModel = new Recipe({
   },
 
   npmDependencies: function () {
-    var npmBlock = this.npmDeps.reduce(function (all, name){ 
-      var version = "1.0.0"; //TODO look up version
+    if(this.npmDeps.length === 0) return null;
+
+    var npmBlock = this.npmDeps.reduce(function (all, name){
+      var version = "latest"; //TODO look up version
       all[name] = version;
       return all;
     }, {});
+
+    ReactivePromise.when("npmDependencies", Promise.resolve(2));
+
     return JSON.stringify(npmBlock);
   },
 

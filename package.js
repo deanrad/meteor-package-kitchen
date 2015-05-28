@@ -7,7 +7,8 @@ Package.describe({
 });
 
 Npm.depends({
-  "mkdirp": "0.5.0"
+  "mkdirp": "0.5.0",
+  "latest-version": "1.0.0"
 });
 
 Package.onUse(function(api) {
@@ -16,7 +17,9 @@ Package.onUse(function(api) {
   api.use("iron:router@1.0.0");
   api.use("deanius:worksheet@1.0.0");
   api.use("deanius:promise@2.0.4");
+  api.use("arsnebula:reactive-promise@0.9.1");
   api.use("mrt:session-amplify@0.1.0");
+
   // use it, and make its exports available in the app that includes us
   api.imply("perak:markdown@1.0.4");
 

@@ -1,6 +1,7 @@
 var fs = Npm.require('fs');
 var path = Npm.require('path');
 var mkdirp = Meteor.wrapAsync(Npm.require('mkdirp'));
+var latestVersion = Meteor.wrapAsync(Npm.require("latest-version"));
 
 Meteor.methods({
   "deanius:package-kitchen#saveToApp" : function (packageName, allFilesRendered) {
@@ -35,5 +36,17 @@ Meteor.methods({
 
     console.log('deanius:package-kitchen - finished package generation and registration');
     //note: we hope not to get screwed by-an auto-reload breaking us up..
+  },
+
+  "deanius:package-kitchen#latest-version": silentErr(latestVersion)
+});
+
+function silentErr (fn) {
+  return function (/* arguments */) {
+    try {
+      return fn.apply(null, Array.prototype.slice.call(arguments));
+    } catch (ex) {
+      return undefined;
+    }
   }
-})
+}

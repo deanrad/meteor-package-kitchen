@@ -12,6 +12,13 @@ Package.onUse(function(api) {
   api.export("{{ export }}");
 });
 
+{{#if npmDependencies}}
+  {{#if isReactivePromiseReady "npmDependencies"}}
+  Npm.depends({{npmDependencies}})
+  {{else}}
+  Npm.depends({"loading": true});
+  {{/if}}
+{{/if}}
 
 {{> Template.dynamic template=testFramework }}
 

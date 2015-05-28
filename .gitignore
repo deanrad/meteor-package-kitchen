@@ -1,3 +1,5 @@
 .build*
 .npm*
 versions.json
+
+npm-debug.log
