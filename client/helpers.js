@@ -48,6 +48,7 @@ function _updatePackage () {
     SessionAmplify.set("summary", $("[name=summary]").val());
     SessionAmplify.set("code", $("[name=code]").val());
     SessionAmplify.set("export", $("[name=export]").val());
+    SessionAmplify.set("npmDeps", $("[name=npmDeps]").val());
   });
 
   packageModel.atmosphereName = $("[name=atmosphereName]").val();
@@ -58,9 +59,16 @@ function _updatePackage () {
   packageModel.summary = $("input[name=summary]").val(),
   packageModel.code = $("[name=code]").val();
   packageModel.export = $("[name=export]").val();
+  packageModel.npmDeps = parseDeps($("[name=npmDeps]").val());
 
   packageModel.packageType = $("input:checked[name=packageType]").val();
   packageModel.testFramework = $("input:checked[name=testFramework]").val();
+}
+
+function parseDeps (depsString) {
+  if(depsString==="") return [];
+
+  return depsString.split(/\s*,\s*/);
 }
 
 function suggestExports (e) {
