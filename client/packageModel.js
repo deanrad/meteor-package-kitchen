@@ -2,10 +2,9 @@
 var Recipe = worksheet;
 
 _npmVersions = new ReactiveDict('npmVersions');
-window.npmVersions = _npmVersions;
 
 //TODO allow changes to this model through a GUI, separate user parts
-var packageModel = new Recipe({
+packageModel = new Recipe({
   atmosphereName: "deanius",
   githubName: "chicagogrooves",
   packageName: "new-package",
@@ -141,5 +140,3 @@ var packageModel = new Recipe({
     return match ? match[1] : "";
   }
 });
-
-this.packageModel = packageModel;

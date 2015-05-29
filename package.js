@@ -1,7 +1,7 @@
 Package.describe({
  name: "deanius:package-kitchen",
  summary: "Easy bootstrapping of Meteor packages, demo at: http://package-kitchen.meteor.com",
- version: "1.1.4",
+ version: "1.1.5",
  git: "https://github.com/chicagogrooves/meteor-package-kitchen",
  debugOnly: true
 });
@@ -17,7 +17,6 @@ Package.onUse(function(api) {
   api.use("iron:router@1.0.0");
   api.use("deanius:worksheet@1.0.0");
   api.use("deanius:promise@2.0.4");
-  api.use("arsnebula:reactive-promise@0.9.1");
   api.use("mrt:session-amplify@0.1.0");
 
   // use it, and make its exports available in the app that includes us
