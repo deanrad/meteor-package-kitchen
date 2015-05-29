@@ -1,5 +1,4 @@
 amplify@1.0.0
-arsnebula:reactive-promise@0.9.1
 autoupdate@1.2.1
 base64@1.0.3
 binary-heap@1.0.3
@@ -9,7 +8,7 @@ boilerplate-generator@1.0.3
 callback-hook@1.0.3
 check@1.0.5
 ddp@1.1.0
-deanius:package-kitchen@1.1.2
+deanius:package-kitchen@1.1.4
 deanius:promise@2.0.4
 deanius:worksheet@1.0.0
 deps@1.0.7

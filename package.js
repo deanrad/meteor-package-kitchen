@@ -1,7 +1,7 @@
 Package.describe({
  name: "deanius:package-kitchen",
  summary: "Easy bootstrapping of Meteor packages, demo at: http://package-kitchen.meteor.com",
- version: "1.1.3",
+ version: "1.1.4",
  git: "https://github.com/chicagogrooves/meteor-package-kitchen",
  debugOnly: true
 });
@@ -40,7 +40,6 @@ Package.onUse(function(api) {
   api.addFiles("client/zip.js", ["client"]);
   api.addFiles("client/helpers.js", ["client"]);
 
-  // we don't actually need to export, globals will leak!!
-  //api.exports("packageModel");
+  api.export("packageModel", "client");
   api.export("_npmVersions", "client");
 });
