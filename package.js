@@ -40,5 +40,6 @@ Package.onUse(function(api) {
   api.addFiles("client/helpers.js", ["client"]);
 
   api.export("packageModel", "client");
+  api.export("fizzoo", "client");
   api.export("_npmVersions", "client");
 });
