@@ -1,7 +1,7 @@
 //try this renaming out
 var Recipe = worksheet;
 
-_npmVersions = new ReactiveDict('npmVersions');
+var _npmVersions = new ReactiveDict('npmVersions');
 
 //TODO allow changes to this model through a GUI, separate user parts
 packageModel = new Recipe({

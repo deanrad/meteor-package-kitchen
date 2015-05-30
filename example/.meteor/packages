@@ -5,6 +5,7 @@ iron:router
 
 # the package generator, exposed at /kitchen
 deanius:package-kitchen
+audit-argument-checks
 
 # utilities
 

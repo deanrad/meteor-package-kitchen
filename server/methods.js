@@ -5,6 +5,9 @@ var latestVersion = Meteor.wrapAsync(Npm.require("latest-version"));
 
 Meteor.methods({
   "deanius:package-kitchen#saveToApp" : function (packageName, allFilesRendered) {
+    check(packageName, String);
+    check(packageName, Array);
+
     // check - array of {path, contents}
     // check - make sure folder doesn't exist, or warn
 
@@ -38,15 +41,13 @@ Meteor.methods({
     //note: we hope not to get screwed by-an auto-reload breaking us up..
   },
 
-  "deanius:package-kitchen#latest-version": silentErr(latestVersion)
-});
-
-function silentErr (fn) {
-  return function (/* arguments */) {
-    try {
-      return fn.apply(null, Array.prototype.slice.call(arguments));
+  "deanius:package-kitchen#latest-version": function (name) {
+    check(name, String);
+    try{
+      return latestVersion(name);
     } catch (ex) {
       return undefined;
     }
   }
-}
+
+});
