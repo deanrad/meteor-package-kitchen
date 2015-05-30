@@ -1,5 +1,5 @@
 Router.route("home", {
   path: "/",
   template: "kitchen",
-  data: {}
+  data: Package["deanius:package-kitchen"]["packageModel"]
 })

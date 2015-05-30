@@ -1,4 +1,4 @@
 Router.route("kitchen", {
   path: "/kitchen",
-  data: {}
+  data: packageModel
 })

@@ -1,7 +1,7 @@
 Package.describe({
  name: "deanius:package-kitchen",
  summary: "Easy bootstrapping of Meteor packages, demo at: http://package-kitchen.meteor.com",
- version: "1.1.5",
+ version: "1.2.0",
  git: "https://github.com/chicagogrooves/meteor-package-kitchen",
  debugOnly: true
 });
@@ -40,6 +40,4 @@ Package.onUse(function(api) {
   api.addFiles("client/helpers.js", ["client"]);
 
   api.export("packageModel", "client");
-  api.export("fizzoo", "client");
-  api.export("_npmVersions", "client");
 });

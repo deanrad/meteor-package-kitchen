@@ -1,8 +1,5 @@
 var updatePackage = _.debounce(_updatePackage, 50);
 
-/* debugging global export */
-fizzoo = 3;
-
 Template.package.events({
   "click .savePackage" : updatePackage,
   "change input[type=radio]": updatePackage,
