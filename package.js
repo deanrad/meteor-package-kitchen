@@ -1,9 +1,9 @@
 Package.describe({
  name: "deanius:package-kitchen",
  summary: "Easy bootstrapping of Meteor packages, demo at: http://package-kitchen.meteor.com",
- version: "1.2.3",
+ version: "1.2.4",
  git: "https://github.com/chicagogrooves/meteor-package-kitchen",
- debugOnly: true
+ //debugOnly: true // not worth running into this bug: http://bit.ly/1EKl2Df
 });
 
 Npm.depends({
