@@ -6,7 +6,7 @@ var latestVersion = Meteor.wrapAsync(Npm.require("latest-version"));
 Meteor.methods({
   "deanius:package-kitchen#saveToApp" : function (packageName, allFilesRendered) {
     check(packageName, String);
-    check(packageName, Array);
+    check(allFilesRendered, [Match.ObjectIncluding({path: String, contents: String})]);
 
     // check - array of {path, contents}
     // check - make sure folder doesn't exist, or warn

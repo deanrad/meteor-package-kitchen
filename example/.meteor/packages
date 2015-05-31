@@ -1,13 +1,11 @@
 # Meteor packages used by this project, one per line.
+# Check this file (and the other files in this directory) into your repository.
+#
+# 'meteor add' and 'meteor remove' will edit this file for you,
+# but you can also edit it by hand.
 
 meteor-platform
 iron:router
-
-# the package generator, exposed at /kitchen
 deanius:package-kitchen
 audit-argument-checks
-
-# utilities
-
-# uncategorized
 twbs:bootstrap
