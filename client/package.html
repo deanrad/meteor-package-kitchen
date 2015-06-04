@@ -28,40 +28,49 @@
     On Atmosphere, you are:<br>
     <input type="text" name="atmosphereName" value=""
       autocapitalize="off" autocorrect="off"
-      placeholder="Your Meteor Developer Account name">
+      placeholder="Your Meteor Developer Account name"
+      data-bind="value: atmosphereName">
 
     <br>
     On GitHub, you are:<br>
     <input type="text" name="githubName" value=""
       autocapitalize="off" autocorrect="off"
-      placeholder="Your Github account name">
+      placeholder="Your Github account name"
+      data-bind="value: githubName">
 
     <br>
     What will you name this new-fangled thing?<br>
     <input type="text" name="packageName"
       autocapitalize="off" autocorrect="off"
-      placeholder="new-thing">
+      placeholder="new-thing"
+      data-bind="value: packageName">
 
     <br>
     What will it do for users who install it?<br>
-    <input type="text" name="summary" placeholder="Keep it to 1 sentence">
+    <input type="text" name="summary"
+    placeholder="Keep it to 1 sentence"
+    data-bind="value: summary">
 
     <br>
     Will it have a demo site?<br>
     <input type="text" name="demoUrl"
       autocapitalize="off" autocorrect="off"
-      placeholder="http://somewhere.meteor.com">
+      placeholder="http://somewhere.meteor.com"
+      data-bind="value: demoUrl">
 
     &nbsp;&nbsp;<a href="{{demoUrl}}" target="_blank">Preview</a>
     <br>
     <br>
     Does this package enhance the client, server, or is it a shared package? <br>
     <label for="packageType1">Shared</label>
-    <input type="radio" name="packageType" id="packageType1" value="shared" checked="1">
+    <input type="radio" name="packageType" id="packageType1" value="shared"
+      data-bind="checked: packageType">
     <label for="packageType2">Client</label>
-    <input type="radio" name="packageType" id="packageType2" value="client">
+    <input type="radio" name="packageType" id="packageType2" value="client"
+      data-bind="checked: packageType">
     <label for="packageType3">Server</label>
-    <input type="radio" name="packageType" id="packageType3" value="server">
+    <input type="radio" name="packageType" id="packageType3" value="server"
+      data-bind="checked: packageType">
 
     <!--
     <br>
@@ -75,28 +84,34 @@
     What code do you want this package to include ?<br>
     <textarea id="code" name="code" rows="10" cols="72"
       autocapitalize="off" autocorrect="off"
-      placeholder=""></textarea>
+      placeholder=""
+      data-bind="text: code"></textarea>
 
     <br>
     Does it export any vars to the global scope?<br>
     <input type="text" name="export" value=""
-      autocapitalize="off" autocorrect="off"><br>
+      autocapitalize="off" autocorrect="off"
+      data-bind="value: export"><br>
 
 
     <br>
     Does it depend on any Npm modules ? <br>
     <input type="text" name="npmDeps" value=""
       autocapitalize="off" autocorrect="off"
-      placeholder="Ex: mocha, chai"><br>
+      placeholder="Ex: mocha, chai"
+      data-bind="value: npmDepsString"><br>
 
     <br>
     Testing Strategy?<br>
     <label for="test1">TinyTest : kickin' it old school</label>
-    <input type="radio" name="testFramework" id="test1" value="tinytest" checked="1"><br>
+    <input type="radio" name="testFramework" id="test1" value="tinytest"
+      data-bind="checked: testFramework"><br>
     <label for="test2">Mocha : describe it 'awesome' </label>
-    <input type="radio" name="testFramework" id="test2" value="mocha"><br>
+    <input type="radio" name="testFramework" id="test2" value="mocha"
+      data-bind="checked: testFramework"><br>
     <label for="test3">None : <i>"Danger"</i> is my middle name. </label>
-    <input type="radio" name="testFramework" id="test3" value=""><br>
+    <input type="radio" name="testFramework" id="test3" value=""
+      data-bind="checked: testFramework"><br>
 
   </form>
 </div>

@@ -15,7 +15,10 @@ Package.onUse(function(api) {
   api.versionsFrom("1.0.2");
   api.use(["meteor", "spacebars", "templating", "underscore", "reactive-dict"]);
   api.use("iron:router@1.0.0");
-  api.use("deanius:worksheet@1.0.0");
+  api.use("manuel:viewmodel@1.7.4");
+  api.imply("manuel:viewmodel@1.7.4");
+  api.use("manuel:viewmodel-explorer@1.0.5");
+
   api.use("deanius:promise@2.0.4");
   api.use("mrt:session-amplify@0.1.0");
 
@@ -34,7 +37,7 @@ Package.onUse(function(api) {
   api.addFiles("client/flair.html", ["client"]);
   api.addFiles("client/kitchen.html", ["client"]);
   api.addFiles("client/package.html", ["client"]);
-  api.addFiles("client/packageModel.js", ["client"]);
+  api.addFiles("client/_viewmodel.js", ["client"]);
   api.addFiles("client/routes.js", ["client"])
   api.addFiles("client/zip.js", ["client"]);
   api.addFiles("client/helpers.js", ["client"]);
