@@ -1,6 +1,6 @@
-var _npmVersions = new ReactiveDict('npmVersions');
+var _npmVersions = new ReactiveDict("npmVersions");
 
-Template.package.viewmodel('packageModel', {
+Template.package.viewmodel("packageModel", {
   atmosphereName: "deanius",
   githubName: "chicagogrooves",
   packageName: "new-package",
@@ -97,7 +97,7 @@ Template.package.viewmodel('packageModel', {
   testFiles: function () {
     if (! this.testFramework() ) return [];
     return [{
-      path: 'tests/' + this.packageType() + '/index.js',
+      path: "tests/" + this.packageType() + "/index.js",
       where: this.fileLocation(),
       contents: this.testCode(),
       template: Template.code
