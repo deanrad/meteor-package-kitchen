@@ -1,0 +1,118 @@
+<template name="package">
+  <style media="screen">
+  body{ padding-left: 10px; background-color: #dde}
+  .file { border: 1px solid #444; margin-bottom: 15px; background-color: #eee;}
+  .markdown { background-color: white;}
+  .packageDef input[type=text] { width: 300px; }
+  .packageDef input[type=radio] { width: 30px; }
+  </style>
+  <div class="packageDef col-md-6">
+
+  <h3>Let's cook up a package!</h3>
+
+  <p>
+    You've got the code in mind you want to package, right?
+    OK, hold your horses, we'll have you ready in just a second.
+    Let us guide you through the basic questions, and watch your
+    package get written Meteor-style.
+    <br>
+    When you're done:
+    <ol>
+      <li>Download it as a zip</li>
+      <li>Unzip it to the <code>packages/</code> dir of an app</li>
+      <li><code>meteor add you:your-package</code></li>
+    </ol>
+  </p>
+
+  <form action="#">
+    On Atmosphere, you are:<br>
+    <input type="text" name="atmosphereName" value=""
+      autocapitalize="off" autocorrect="off"
+      placeholder="Your Meteor Developer Account name"
+      data-bind="value: atmosphereName">
+
+    <br>
+    On GitHub, you are:<br>
+    <input type="text" name="githubName" value=""
+      autocapitalize="off" autocorrect="off"
+      placeholder="Your Github account name"
+      data-bind="value: githubName">
+
+    <br>
+    What will you name this new-fangled thing?<br>
+    <input type="text" name="packageName"
+      autocapitalize="off" autocorrect="off"
+      placeholder="new-thing"
+      data-bind="value: packageName">
+
+    <br>
+    What will it do for users who install it?<br>
+    <input type="text" name="summary"
+    placeholder="Keep it to 1 sentence"
+    data-bind="value: summary">
+
+    <br>
+    Will it have a demo site?<br>
+    <input type="text" name="demoUrl"
+      autocapitalize="off" autocorrect="off"
+      placeholder="http://somewhere.meteor.com"
+      data-bind="value: demoUrl">
+
+    &nbsp;&nbsp;<a href="{{demoUrl}}" target="_blank">Preview</a>
+    <br>
+    <br>
+    Does this package enhance the client, server, or is it a shared package? <br>
+    <label for="packageType1">Shared</label>
+    <input type="radio" name="packageType" id="packageType1" value="shared"
+      data-bind="checked: packageType">
+    <label for="packageType2">Client</label>
+    <input type="radio" name="packageType" id="packageType2" value="client"
+      data-bind="checked: packageType">
+    <label for="packageType3">Server</label>
+    <input type="radio" name="packageType" id="packageType3" value="server"
+      data-bind="checked: packageType">
+
+    <!--
+    <br>
+    How are you with people knowing about this ? <br>
+    <label for="privacy1">Share : Share with the people!</label>
+    <input type="radio" name="privacy" id="privacy1" value="1" checked="1"><br>
+    <label for="privacy2">Private : Keep it on the DL <i>(Sssshh)</i></label>
+    <input type="radio" name="privacy" id="privacy2" value="0"><br>
+-->
+    <br>
+    What code do you want this package to include ?<br>
+    <textarea id="code" name="code" rows="10" cols="72"
+      autocapitalize="off" autocorrect="off"
+      placeholder=""
+      data-bind="text: code"></textarea>
+
+    <br>
+    Does it export any vars to the global scope?<br>
+    <input type="text" name="export" value=""
+      autocapitalize="off" autocorrect="off"
+      data-bind="value: export"><br>
+
+
+    <br>
+    Does it depend on any Npm modules ? <br>
+    <input type="text" name="npmDeps" value=""
+      autocapitalize="off" autocorrect="off"
+      placeholder="Ex: mocha, chai"
+      data-bind="value: npmDepsString"><br>
+
+    <br>
+    Testing Strategy?<br>
+    <label for="test1">TinyTest : kickin' it old school</label>
+    <input type="radio" name="testFramework" id="test1" value="tinytest"
+      data-bind="checked: testFramework"><br>
+    <label for="test2">Mocha : describe it 'awesome' </label>
+    <input type="radio" name="testFramework" id="test2" value="mocha"
+      data-bind="checked: testFramework"><br>
+    <label for="test3">None : <i>"Danger"</i> is my middle name. </label>
+    <input type="radio" name="testFramework" id="test3" value=""
+      data-bind="checked: testFramework"><br>
+
+  </form>
+</div>
+</template>

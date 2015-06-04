@@ -6,6 +6,14 @@
 
 meteor-platform
 iron:router
-deanius:package-kitchen
+meteorhacks:npm
 audit-argument-checks
 twbs:bootstrap
+reactive-dict
+
+deanius:promise
+perak:markdown
+manuel:viewmodel
+manuel:viewmodel-explorer
+
+npm-container
