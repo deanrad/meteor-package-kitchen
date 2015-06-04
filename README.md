@@ -33,6 +33,9 @@ You will receive an error upon Save if:
 You can spin up the app (as it deployed on http://package-kitchen.meteor.com), by running `npm start`.
 or, if you're old school, `cd example; meteor`.
 
+The example folder contains copies of all the templates, rather than referencing
+the atmosphere version.
+
 ## Further Reference
 [The Full Meteor Docs on Packages](http://docs.meteor.com/#/full/packagedefinition)
 

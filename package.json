@@ -1,6 +1,7 @@
 {
   "scripts": {
     "start": "cd example; meteor --port 3141",
+    "shell": "cd example; meteor shell",
     "test": "meteor test-packages ./",
     "meteor-add": "cd example; meteor add",
     "deploy": "rm -rf example/packages/deanius\\:package-kitchen; cd example; meteor deploy package-kitchen.meteor.com",

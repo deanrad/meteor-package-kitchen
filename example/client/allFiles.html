@@ -1,0 +1,19 @@
+<template name="allFiles">
+<div class="allFiles col-md-6">
+  <hr>
+  {{#each allFilesRendered}}
+
+    <div class="path">
+      {{ path }}
+    </div>
+
+
+    {{#if isMarkdown}}
+      <div class="markdown file">{{#markdown}}{{{contents}}}{{/markdown}}</div>
+    {{else}}
+      <pre class="file">{{{ contents }}}</pre>
+    {{/if}}
+
+  {{/each}}
+</div>
+</template>
