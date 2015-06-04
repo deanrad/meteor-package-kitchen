@@ -1,14 +1,7 @@
 Template.kitchen.events({
   "click .download" : zipPackage,
   "click .saveToApp" : function (e) {
-    var packageModel = ViewModel.byId("packageModel");
-    Meteor.promise(
-      "deanius:package-kitchen#saveToApp",
-      packageModel.fullPackageName(), packageModel.allFilesRendered()
-    ).then(
-      function(){ alert("Your package has been created. App will now reload.") },
-      function(err){ alert(err.reason); }
-    );
+    alert("Save to App only works when deanius:package-kitchen is a dependency of your application. Do meteor add deanius:package-kitchen, go to '/kitchen', and then try Save To App again.")
   }
 });
 
