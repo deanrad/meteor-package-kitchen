@@ -2,7 +2,7 @@ zipPackage = function () {
   console.log("zipping package");
   var zipContent, zip = new JSZip();
 
-  packageModel.allFilesRendered.forEach(function (file) {
+  ViewModel.byId("packageModel").allFilesRendered().forEach(function (file) {
     zip.file(file.path, file.contents);
   });
 

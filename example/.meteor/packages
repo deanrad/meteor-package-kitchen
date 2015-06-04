@@ -9,4 +9,3 @@ iron:router
 deanius:package-kitchen
 audit-argument-checks
 twbs:bootstrap
-deanius:easy-log
