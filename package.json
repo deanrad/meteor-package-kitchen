@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "cd example; meteor --port 3141",
+    "start": "cd example; open 'http://localhost:3141/kitchen'; meteor --port 3141",
     "shell": "cd example; meteor shell",
     "test": "meteor test-packages ./",
     "meteor-add": "cd example; meteor add",

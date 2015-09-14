@@ -1,3 +1,0 @@
-Router.route("kitchen", {
-  path: "/"
-});

@@ -1,9 +1,5 @@
-<!-- xxx maybe we shouldn't take over the meta tag, except for our route ? -->
-<head>
-  <meta name="viewport" content="width=device-width">
-  <title>Make a Meteor Package With Ease &copy;deanius 2015</title>
-</head>
-<template name="kitchen">
+
+<template name="package-kitchen-kitchen">
   <div class="container-fluid">
     <div class="row">
       {{> package }}
@@ -12,7 +8,7 @@
         <button type="button" class="btn btn-primary download">Download Package (ZIP)</button>
         <button type="button" class="btn btn-primary saveToApp">Save Package to App</button>
 
-        {{> allFiles }}
+        {{> Template.dynamic template="package-kitchen-allFiles" }}
       </div>
     </div>
   </div>

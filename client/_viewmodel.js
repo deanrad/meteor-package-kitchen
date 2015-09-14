@@ -141,3 +141,5 @@ Template.package.viewmodel("packageModel", {
     return match ? match[1] : "";
   }
 });
+
+packageModel = ViewModel.byId("packageModel");

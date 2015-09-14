@@ -1,4 +1,4 @@
-Template.kitchen.events({
+Template['package-kitchen-kitchen'].events({
   "click .download" : zipPackage,
   "click .saveToApp" : function (e) {
     var packageModel = ViewModel.byId("packageModel");
@@ -12,7 +12,7 @@ Template.kitchen.events({
   }
 });
 
-Template.allFiles.helpers({
+Template['package-kitchen-allFiles'].helpers({
   isMarkdown : function () {
     return this.path.match(/\.md$/);
   },

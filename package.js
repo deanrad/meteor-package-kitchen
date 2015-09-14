@@ -1,7 +1,7 @@
 Package.describe({
  name: "deanius:package-kitchen",
  summary: "Easy bootstrapping of Meteor packages, demo at: http://package-kitchen.meteor.com",
- version: "1.3.1",
+ version: "1.3.2",
  git: "https://github.com/chicagogrooves/meteor-package-kitchen",
  //debugOnly: true // not worth running into this bug: http://bit.ly/1EKl2Df
 });
@@ -13,7 +13,7 @@ Npm.depends({
 
 Package.onUse(function(api) {
   api.versionsFrom("1.0.2");
-  api.use(["meteor", "spacebars", "templating", "underscore", "reactive-dict"]);
+  api.use(["meteor", "tracker", "spacebars", "templating", "underscore", "reactive-dict"]);
   api.use("iron:router@1.0.0");
   api.use("manuel:viewmodel@1.7.4");
   api.imply("manuel:viewmodel@1.7.4");

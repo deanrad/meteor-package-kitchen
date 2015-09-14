@@ -1,9 +1,0 @@
-<template name="mocha"
->Package.onTest(function (api) {
-  api.use(["mike:mocha-package", "practicalmeteor:chai"]);
-  api.use("{{ fullPackageName }}");
-  {{> testFiles }}
-});
-
-
-</template>
