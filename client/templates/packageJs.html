@@ -16,7 +16,7 @@ Package.onUse(function(api) {
   // The files of this package{{> apiFiles }}
 
   // The variables that become global for users of your package
-  api.export("{{ export }}");
+  api.export("{{ export }}", {{fileLocation}});
 });
 
 {{#if npmDependencies}}
