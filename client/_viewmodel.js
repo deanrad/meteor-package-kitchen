@@ -1,6 +1,6 @@
 var _npmVersions = new ReactiveDict("npmVersions");
 
-Template["package-kitchen-editor"].viewmodel("packageModel", {
+packageModel = {
   atmosphereName: "deanius",
   githubName: "chicagogrooves",
   packageName: "new-package",
@@ -11,7 +11,7 @@ Template["package-kitchen-editor"].viewmodel("packageModel", {
   "export": "log",
 
   packageType: "shared", // client, server, or shared
-  packageDeps: '["meteor", "ddp", "jquery"]',
+  packageDeps: ["meteor", "ddp"],
   npmDepsString: "", // comma-separated
   npmDeps: function () {
     if(this.npmDepsString()==="") return [];
@@ -140,6 +140,6 @@ Template["package-kitchen-editor"].viewmodel("packageModel", {
     var match = this.code().match(/^(\w+)\s?=/m);
     return match ? match[1] : "";
   }
-});
+};
 
-packageModel = ViewModel.byId("packageModel");
+Template["package-kitchen-editor"].viewmodel("packageModel", packageModel);

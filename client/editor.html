@@ -72,6 +72,18 @@
     <input type="radio" name="packageType" id="packageType3" value="server"
       data-bind="checked: packageType">
 
+    <br>
+    What Meteor Packages does it depend on ? <br>
+    <form id="addNewPackageDep">
+    <input type="text" name="addNewPackageDep" value=""
+      autocapitalize="off" autocorrect="off"
+      placeholder="Ex: jquery"><br>
+    </form>
+    <ul>
+      {{#each packageDeps}}
+      <li>{{.}}</li>
+      {{/each}}
+    </ul>
     <!--
     <br>
     How are you with people knowing about this ? <br>
