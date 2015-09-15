@@ -1,8 +1,9 @@
 var _npmVersions = new ReactiveDict("npmVersions");
+var _meteorVersions = new ReactiveDict("meteorVersions");
 
 packageModel = {
   atmosphereName: "deanius",
-  githubName: "chicagogrooves",
+  githubName: "deanius",
   packageName: "new-package",
   version: "0.1.0",
   demoUrl: "",
