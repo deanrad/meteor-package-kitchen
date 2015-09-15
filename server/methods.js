@@ -3,6 +3,8 @@ var path = Npm.require('path');
 var mkdirp = Meteor.wrapAsync(Npm.require('mkdirp'));
 var latestVersion = Meteor.wrapAsync(Npm.require("latest-version"));
 
+DDPClient = Npm.require('ddp');
+
 Meteor.methods({
   "deanius:package-kitchen#saveToApp" : function (packageName, allFilesRendered) {
     check(packageName, String);
@@ -48,6 +50,43 @@ Meteor.methods({
     } catch (ex) {
       return undefined;
     }
+  },
+
+  "deanius:package-kitchen#latest-meteor-version": function (name) {
+    check(name, String);
+
+    var ddpclient = new DDPClient({url: 'wss://atmospherejs.com/websocket'});
+    var connected = new Promise(function(resolve) {
+      ddpclient.connect(function(error) {
+        if (error) throw error;
+        console.log('DDP connected.');
+        resolve(ddpclient);
+      });
+    });
+
+    var result = connected
+      .then(function (ddpclient) {
+        return new Promise(function (resolve) {
+          ddpclient.subscribe('package', [name], function () {
+            console.log("package query ready for " + name + ".")
+            var thePackage = _.values(ddpclient.collections.packages).filter(function (p){
+              return p.name === name;
+            })[0];
+            resolve(thePackage && thePackage.latestVersion.version);
+          })
+        })
+      })
+      .then(function(version){
+        console.log('DDP closed.');
+        ddpclient.close();
+        return version;
+      })
+      .catch(function (err) {
+        console.log("Package Lookup Error", err);
+      });
+
+    return Promise.await(result);
   }
+
 
 });
