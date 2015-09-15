@@ -84,6 +84,16 @@
       <li>{{.}} &nbsp;<a data-package-name="{{.}}" class="deleteDep">X</a></li>
       {{/each}}
     </ul>
+
+    <br>
+    What major Meteor version are you targeting? <br>
+    <select name="requiredMeteorVersion" data-bind="value: meteorVersion">
+      <option value="1.1.0.3">1.1.0.3 (latest)</option>
+      <option value="1.0.1">1.0.1</option>
+      <option value="0.9.5">0.9.5</option>
+      <option value="0.9.0">0.9.0</option>
+    </select>
+
     <!--
     <br>
     How are you with people knowing about this ? <br>
