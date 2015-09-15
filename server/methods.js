@@ -87,7 +87,7 @@ Meteor.methods({
         return version;
       })
       .catch(function (err) {
-        console.log("Package Lookup Error", err);
+        console.log("Package Lookup Error:", err);
       });
 
     return Promise.await(result);

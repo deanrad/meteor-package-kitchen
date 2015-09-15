@@ -1,16 +1,3 @@
-Template['package-kitchen-kitchen'].events({
-  "click .download" : zipPackage,
-  "click .saveToApp" : function (e) {
-    Meteor.promise(
-      "deanius:package-kitchen#saveToApp",
-      packageModel.fullPackageName(), packageModel.allFilesRendered()
-    ).then(
-      function(){ alert("Your package has been created. App will now reload.") },
-      function(err){ alert(err.reason); }
-    );
-  }
-});
-
 Template['package-kitchen-editor'].events({
   'click .deleteDep': function (e, t) {
     var packageName  = e.target.attributes['data-package-name'].value;
@@ -35,16 +22,6 @@ Template['package-kitchen-editor'].onRendered( function () {
     packageViewModel.packageDeps().push(packageName);
     $pkg.val('');
   });
-});
-
-Template['package-kitchen-allFiles'].helpers({
-  isMarkdown : function () {
-    return this.path.match(/\.md$/);
-  },
-  allFilesRendered: function () {
-    return ViewModel.byId("packageModel") && ViewModel.byId("packageModel").allFilesRendered();
-  }
-
 });
 
 // because exports aren't exported with debugOnly package

@@ -41,7 +41,9 @@ Package.onUse(function(api) {
   api.addFiles("client/_viewmodel.js", ["client"]);
   api.addFiles("client/routes.js", ["client"])
   api.addFiles("client/zip.js", ["client"]);
-  api.addFiles("client/helpers.js", ["client"]);
+  api.addFiles("client/editor.js", ["client"]);
+  api.addFiles("client/kitchen.js", ["client"]);
+  api.addFiles("client/allFiles.js", ["client"]);
 
   api.export("packageModel", "client");
 });
