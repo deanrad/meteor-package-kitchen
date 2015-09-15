@@ -66,13 +66,18 @@ Meteor.methods({
 
     var result = connected
       .then(function (ddpclient) {
-        return new Promise(function (resolve) {
+        return new Promise(function (resolve, reject) {
           ddpclient.subscribe('package', [name], function () {
             console.log("package query ready for " + name + ".")
-            var thePackage = _.values(ddpclient.collections.packages).filter(function (p){
-              return p.name === name;
-            })[0];
-            resolve(thePackage && thePackage.latestVersion.version);
+            var allPackages = ddpclient.collections.packages;
+            if( ! allPackages ) {
+              reject(name)
+            } else {
+              var thePackage = _.values(ddpclient.collections.packages).filter(function (p){
+                return p.name === name;
+              })[0];
+              resolve(thePackage && thePackage.latestVersion.version);
+            }
           })
         })
       })

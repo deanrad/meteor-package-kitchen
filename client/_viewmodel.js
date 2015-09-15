@@ -13,6 +13,23 @@ packageModel = {
 
   packageType: "shared", // client, server, or shared
   packageDeps: ["meteor", "ddp"],
+  packagesWithVersions: function () {
+    var self = this;
+
+    self.packageDeps().forEach(function (name){
+      if( name.indexOf(":") == -1 ) return; //only for 3rd party deps
+      Meteor.promise("deanius:package-kitchen#latest-meteor-version", name).then(function (version){
+        if (!version) return;
+        _meteorVersions.set(name, version);
+      })
+    });
+
+    return self.packageDeps().map(function(name){
+      var versionByName = _meteorVersions.get(name);
+
+      return versionByName ? name + "@" + versionByName : name;
+    });
+  },
   npmDepsString: "", // comma-separated
   npmDeps: function () {
     if(this.npmDepsString()==="") return [];
@@ -38,7 +55,7 @@ packageModel = {
     if(this.npmDeps().length === 0) return null;
     if( Object.keys(_npmVersions.keys).length > 0) return _npmVersions;
 
-    this.npmDeps().map(function (name) {
+    this.npmDeps().forEach(function (name) {
       _npmVersions.set(name, "latest");
     });
     return _npmVersions;
@@ -54,7 +71,7 @@ packageModel = {
       return all;
     }, {});
 
-    self.npmDeps().map(function (name){
+    self.npmDeps().forEach(function (name){
       Meteor.promise("deanius:package-kitchen#latest-version", name).then(function (version){
         if (!version) return;
         _npmVersions.set(name, version);

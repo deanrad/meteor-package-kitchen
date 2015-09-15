@@ -80,7 +80,7 @@
       placeholder="Ex: jquery"><br>
     </form>
     <ul>
-      {{#each packageDeps}}
+      {{#each packagesWithVersions}}
       <li>{{.}} &nbsp;<a data-package-name="{{.}}" class="deleteDep">X</a></li>
       {{/each}}
     </ul>

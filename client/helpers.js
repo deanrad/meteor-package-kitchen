@@ -21,7 +21,7 @@ Template['package-kitchen-editor'].events({
 })
 
 Template['package-kitchen-editor'].helpers({
-  packageDeps: function () {
+  packagesWithVersions: function () {
     //this helper will be called at least once before our VM, or its global variable are defined
     return (ViewModel.byId("packageModel") && ViewModel.byId("packageModel").packageDeps()) || [];
   }

@@ -1,8 +1,8 @@
 * [x] Make example/ app symlink to outer package, dedupe!
 * [x] Hide "Save Package To App" in production
-* [ ] Meteor 1.1.0.3
+* [x] Meteor 1.1.0.3
+* [x] Add runtime resolution for MeteorJS modules (DDP to atmosphere)
 * [ ] ES6 - Use JS concatenation (or ES6 backquote strings) instead of templates
-* [ ] Add runtime resolution for MeteorJS modules (DDP to atmosphere or what repo ?)
 * [ ] Split up helpers into separate files
 
 Wonkery
