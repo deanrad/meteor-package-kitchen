@@ -3,7 +3,7 @@ Package.describe({
  summary: "Easy bootstrapping of Meteor packages, demo at: http://package-kitchen.meteor.com",
  version: "1.3.2",
  git: "https://github.com/chicagogrooves/meteor-package-kitchen",
- //debugOnly: true // not worth running into this bug: http://bit.ly/1EKl2Df
+ debugOnly: true
 });
 
 Npm.depends({
@@ -19,7 +19,7 @@ Package.onUse(function(api) {
   api.imply("manuel:viewmodel@1.7.4");
   api.use("manuel:viewmodel-explorer@1.0.5");
 
-  api.use("deanius:promise@2.0.4");
+  api.use("okgrow:promise@0.9.0");
   api.use("mrt:session-amplify@0.1.0");
 
   // use it, and make its exports available in the app that includes us
