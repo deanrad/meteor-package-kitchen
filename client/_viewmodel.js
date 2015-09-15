@@ -12,7 +12,7 @@ packageModel = {
   "export": "log",
 
   packageType: "shared", // client, server, or shared
-  packageDeps: ["meteor", "ddp"],
+  packageDeps: ["ddp", "tracker"],
   packagesWithVersions: function () {
     var self = this;
 
@@ -96,6 +96,26 @@ packageModel = {
         return "describe(\"" + this.packageName() + "\", function () {\n  it(\"should be awesome\", function (done) {\n    assert.equal(1,2);\n  });\n});"
   },
 
+  onTestCode: function () {
+    var onTestCode;
+    if(! this.testFramework() ) return "\n";
+
+    if(this.testFramework() === "tinytest"){
+      onTestCode = 'Package.onTest(function (api) {\n' +
+        '  api.use("tinytest");\n';
+    }
+    if(this.testFramework() === "mocha"){
+      onTestCode = 'Package.onTest(function (api) {\n' +
+        '  api.use(["mike:mocha-package", "practicalmeteor:chai"]);\n';
+    }
+    onTestCode +=  '  api.use("' + this.fullPackageName() + '");\n';
+
+    this.testFiles().forEach(function(testFile){
+      onTestCode += '  api.addFiles("' + testFile.path + '", ' + testFile.where + ');';
+    });
+    return onTestCode + "\n});";
+  },
+
   fileLocation: function () {
     if (this.packageType() ==="shared")
       return '["client", "server"]';
@@ -109,8 +129,7 @@ packageModel = {
     return [{
       path: this.packageType() + "/index.js",
       where: this.fileLocation(),
-      contents: this.code(),
-      template: Template.code
+      contents: this.code()
     }]
   },
 
@@ -119,8 +138,7 @@ packageModel = {
     return [{
       path: "tests/" + this.packageType() + "/index.js",
       where: this.fileLocation(),
-      contents: this.testCode(),
-      template: Template.code
+      contents: this.testCode()
     }];
   },
 
