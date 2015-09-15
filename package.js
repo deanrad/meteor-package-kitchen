@@ -36,7 +36,7 @@ Package.onUse(function(api) {
   api.addFiles("client/allFiles.html", ["client"]);
   api.addFiles("client/flair.html", ["client"]);
   api.addFiles("client/kitchen.html", ["client"]);
-  api.addFiles("client/package.html", ["client"]);
+  api.addFiles("client/editor.html", ["client"]);
   api.addFiles("client/_viewmodel.js", ["client"]);
   api.addFiles("client/routes.js", ["client"])
   api.addFiles("client/zip.js", ["client"]);

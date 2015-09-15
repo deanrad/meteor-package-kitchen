@@ -1,6 +1,6 @@
 var _npmVersions = new ReactiveDict("npmVersions");
 
-Template.package.viewmodel("packageModel", {
+Template["package-kitchen-editor"].viewmodel("packageModel", {
   atmosphereName: "deanius",
   githubName: "chicagogrooves",
   packageName: "new-package",
