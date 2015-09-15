@@ -2,8 +2,8 @@ Package.describe({
  name: "deanius:package-kitchen",
  summary: "Easy bootstrapping of Meteor packages, demo at: http://package-kitchen.meteor.com",
  version: "1.3.2",
- git: "https://github.com/deanius/meteor-package-kitchen",
- debugOnly: true
+ git: "https://github.com/deanius/meteor-package-kitchen"
+ //debugOnly: true //XXX wont expose templates in production if we have debugOnly on
 });
 
 Npm.depends({

@@ -3,6 +3,7 @@
 * [x] Meteor 1.1.0.3
 * [x] Add runtime resolution for MeteorJS modules (DDP to atmosphere)
 * [x] Split up helpers into separate files
+* [ ] Publish to github (or suggest Firefox - damn Chrome download-blocking fascism)
 * [ ] Only define saveToApp method in local environment, not hosted
 * [ ] Convert to ES6 - Use JS concatenation (or ES6 backquote strings) instead of templates
 * [ ] Different transpilation options
