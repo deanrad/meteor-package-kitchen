@@ -81,7 +81,7 @@
     </form>
     <ul>
       {{#each packageDeps}}
-      <li>{{.}}</li>
+      <li>{{.}}</li><a data-package-name="{{.}}" class="deleteDep">X</a>
       {{/each}}
     </ul>
     <!--
