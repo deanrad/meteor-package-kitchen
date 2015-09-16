@@ -1,5 +1,5 @@
 Template['package-kitchen-kitchen'].events({
-  "click .saveToApp" : function (e) {
+  "click .download" : function (e) {
     analytics.track("Download Package", {
       packageName: packageViewModel.fullPackageName()
     });
