@@ -1,11 +1,11 @@
 {
   "scripts": {
-    "start": "cd example; open 'http://localhost:3141/kitchen'; meteor --port 3141",
+    "start": "cd example; open 'http://localhost:3141/kitchen'; meteor --port 3141 --settings settings.json",
     "shell": "cd example; meteor shell",
     "test": "meteor test-packages ./",
     "meteor-add": "cd example; meteor add",
     "dev-mode": "rm -rf example/packages/deanius\\:package-kitchen; mkdir -p example/packages; ln -s ../.. example/packages/deanius\\:package-kitchen",
     "release-mode": "rm -rf example/packages/deanius\\:package-kitchen; mkdir example/packages/deanius\\:package-kitchen; cp -rf package.js client server example/packages/deanius\\:package-kitchen/",
-    "deploy": "cd example; meteor deploy package-kitchen.meteor.com"
+    "deploy": "cd example; meteor deploy --settings settings.json package-kitchen.meteor.com"
   }
 }

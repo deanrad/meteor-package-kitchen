@@ -47,6 +47,7 @@ mongo@1.1.0
 mrt:session-amplify@0.1.1
 npm-container@1.0.0
 observe-sequence@1.0.6
+okgrow:analytics@0.3.0
 okgrow:promise@0.9.4
 ordered-dict@1.0.3
 perak:markdown@1.0.5

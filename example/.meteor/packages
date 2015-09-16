@@ -12,6 +12,7 @@ twbs:bootstrap
 reactive-dict
 
 okgrow:promise
+okgrow:analytics
 promise
 perak:markdown
 manuel:viewmodel
