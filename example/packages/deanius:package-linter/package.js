@@ -16,11 +16,13 @@ Package.onUse(function(api) {
 
 
   // The files of this package
-  api.addFiles("server/index.js", ["server"]);
+  api.addFiles("server/packageModel.js", ["server"]);
+  api.addFiles("server/linter.js", ["server"]);
+  api.addFiles("server/methods.js", ["server"]);
 
 
   // The variables that become global for users of your package
-  api.export("log", ["server"]);
+  api.export("PackageLinter", ["server"]);
 });
 
 

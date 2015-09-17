@@ -14,7 +14,7 @@ Npm.depends({
 
 Package.onUse(function(api) {
   api.versionsFrom("1.0.2");
-  api.use(["meteor", "tracker", "spacebars", "templating", "underscore", "reactive-dict"]);
+  api.use(["meteor", "tracker", "spacebars", "templating", "underscore", "reactive-dict", "mongo"]);
   api.use("iron:router@1.0.0");
   api.use("manuel:viewmodel@1.7.4");
   api.imply("manuel:viewmodel@1.7.4");
@@ -34,6 +34,8 @@ Package.onUse(function(api) {
   api.addFiles("client/templates/travis.html", ["client"]);
   api.addFiles("client/editor.html", ["client"]);
   api.addFiles("client/allFiles.html", ["client"]);
+  api.addFiles("client/linter.html", ["client"]);
+  api.addFiles("client/linter.js", ["client"]);
   api.addFiles("client/flair.html", ["client"]);
   api.addFiles("client/kitchen.html", ["client"]);
   api.addFiles("client/_viewmodel.js", ["client"]);
