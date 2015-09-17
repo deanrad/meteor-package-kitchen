@@ -1,41 +1,47 @@
 var localeval = Npm.require('localeval');
 
-//TODO mock out as in https://gist.github.com/deanius/d3f18b07454cd8416417
-var packageModel = {
-  description: {},
-  versionsFrom: null,
-  uses: [],
-  implies: []
-};
-
-var mockApi = {
-  use: function () {
-    packageModel.uses.push([].slice.call(arguments));
-  },
-  versionsFrom: function(versionsFrom) {
-    packageModel.versionsFrom = versionsFrom;
-  }
-};
-
-var env = {
-  Package: {
-    describe: function (x) {
-      packageModel.description = x;
-    },
-    onUse: function (definitionFn) {
-      definitionFn.call({}, mockApi);
-    },
-    getModel: function () {
-      return packageModel;
-    }
-}};
-
+//TODO fully mock out as in https://gist.github.com/deanius/d3f18b07454cd8416417
 Meteor.methods({
   getPackageModel: function (packageJsCodeHopefully) {
     check(packageJsCodeHopefully, String);
     console.log("determining package model from:\n", packageJsCodeHopefully);
+
+    var packageModel = {
+      description: {},
+      versionsFrom: null,
+      uses: [],
+      implies: []
+    };
+
+    var mockApi = {
+      use: function () {
+        packageModel.uses.push([].slice.call(arguments));
+      },
+      versionsFrom: function(versionsFrom) {
+        packageModel.versionsFrom = versionsFrom;
+      }
+    };
+
+    var env = {
+      Package: {
+        describe: function (x) {
+          packageModel.description = x;
+        },
+        onUse: function (definitionFn) {
+          definitionFn.call({}, mockApi);
+        },
+        getModel: function () {
+          return packageModel;
+        }
+    }};
+
     var result = localeval(packageJsCodeHopefully + '; Package.getModel()', env);
-    try{ localeval.clear(); } catch(err){;}
+    try{
+      localeval.clear();
+    } catch(err) {
+      if (err.toString()!="TypeError: Cannot call method 'kill' of undefined")
+        console.log(err);
+    }
     return result;
   }
 });
@@ -56,7 +62,7 @@ Package.onUse(function(api) {
   api.use("ddp");
 })`;
 
-Meteor.promise("getPackageModel", pjs).then(log);
+Meteor.promise("getPackageModel", pjs).then(r => log(JSON.stringify(r, null, 2)));
 {
   "description": {
     "name": "deanius:sandbox",
