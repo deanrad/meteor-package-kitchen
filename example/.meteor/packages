@@ -18,4 +18,5 @@ perak:markdown
 manuel:viewmodel
 
 deanius:package-kitchen
+deanius:package-linter
 npm-container

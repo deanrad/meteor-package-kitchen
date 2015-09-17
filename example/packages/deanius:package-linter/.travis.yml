@@ -1,0 +1,8 @@
+# Travis Badge Markdown (add to README.md): [![Build Status](https://secure.travis-ci.org/deanius/meteor-sandbox.png?branch=master)](https://travis-ci.org/deanius/meteor-sandbox)
+sudo: required
+language: node_js
+node_js:
+  - "0.10"
+
+before_install:
+  - "curl -L http://git.io/ejPSng | /bin/sh"
