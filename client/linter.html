@@ -14,7 +14,9 @@ Package.onUse(function(api) {
   // Core packages and 3rd party packages
   api.use("ddp");
   api.use("okgrow:promise@=0.9.3", "client");
-  api.use("okgrow:router-autoscroll@1.0", ["client", "server"], {weak: true});
+
+  // look, ma, no version declared: 
+  api.use("okgrow:router-autoscroll", ["client", "server"], {weak: true});
 
   api.imply("http");
 

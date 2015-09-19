@@ -10,8 +10,8 @@ zipPackage = function () {
 
   var packageDirName = packageViewModel.fullPackageName().replace(":", "\\:");
   $(".allFiles")
-    .append($("<div>").text("Paste the following into your terminal:"))
-    .append($("<textarea rows='10' style='width: 100%'/>").val(
+    .append($("<div>").text("Paste the following into your terminal (Mac OSX only):"))
+    .append($("<textarea wrap='off' rows='10' style='overflow: auto; width: 100%'/>").val(
     "echo -n " + base64contents + " | pbcopy;\n" +
     "mkdir -p packages/" + packageDirName + ";\n" +
     "cd packages/" + packageDirName + ";\n" +
@@ -20,5 +20,5 @@ zipPackage = function () {
     "meteor add " + packageViewModel.fullPackageName() + "\n"
   ));
   $(window).scrollTop(2000);
-  //window.location = "data:application/zip;base64," + base64contents;
+  window.location = "data:application/zip;base64," + base64contents;
 }
