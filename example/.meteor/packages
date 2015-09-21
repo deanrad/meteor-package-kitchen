@@ -5,18 +5,21 @@
 # but you can also edit it by hand.
 
 meteor-platform
+reactive-dict
+promise
+npm-container
+
 iron:router
 meteorhacks:npm
 audit-argument-checks
 twbs:bootstrap
-reactive-dict
+u2622:persistent-session
 
 okgrow:promise
 okgrow:analytics
-promise
 perak:markdown
 manuel:viewmodel
+aldeed:tabular
 
 deanius:package-kitchen
 deanius:package-linter
-npm-container

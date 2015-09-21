@@ -29,13 +29,14 @@ PackageModel = function PackageModel (packageJsCodeHopefully) {
       };
     },
     use: function (nameAndVersion, arch, options) {
+      if( _.isObject(arch)){ // passing options as the 2nd param, omitting arch
+        options=arch; arch = undefined;
+      }
       var packageNamesAndVersions = _.isArray(nameAndVersion) ? nameAndVersion : Array(nameAndVersion);
+
       packageNamesAndVersions.forEach(function (nameAndVersion) {
         var section = packageModel[mockApi.depType(nameAndVersion) + "Deps"];
         var versionInfo = mockApi.parseNameAndVersion(nameAndVersion);
-        if( _.isObject(arch)){ // passing options as the 2nd param, omitting arch
-          options=arch; arch = undefined;
-        }
         section.uses[versionInfo.name] = _.extend(versionInfo, {
           arch: arch && Array(arch),
           options: options

@@ -16,10 +16,10 @@ var lintRules = [
         error="External dependencies should declare a version",
         ruleErrs = [];
 
-      for (var package in packageModel.externalDeps.uses) {
-        var dep = packageModel.externalDeps.uses[package];
+      for (var p in packageModel.externalDeps.uses) {
+        var dep = packageModel.externalDeps.uses[p];
         if (!dep.versionNum) {
-          ruleErrs.push({code: code, severity: severity, offender: package, error: error})
+          ruleErrs.push({code: code, severity: severity, offender: p, error: error})
         }
       }
 
