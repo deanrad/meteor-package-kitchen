@@ -23,6 +23,7 @@ Package.onUse(function(api) {
 
   // The variables that become global for users of your package
   api.export("PackageLinter", ["server"]);
+  api.export("PackageModel", ["server"]);
 });
 
 
@@ -33,7 +34,7 @@ Npm.depends({
 
 Package.onTest(function (api) {
   api.use("tinytest");
-  api.use("deanius:sandbox");
+  api.use("deanius:package-linter");
   api.addFiles("tests/server/index.js", ["server"]);
 });
 
