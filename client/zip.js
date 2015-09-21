@@ -7,18 +7,15 @@ zipPackage = function () {
   });
 
   var base64contents = zip.generate({type:"base64"});
+  window.location = "data:application/zip;base64," + base64contents;
 
   var packageDirName = packageViewModel.fullPackageName().replace(":", "\\:");
-  $(".allFiles")
-    .append($("<div>").text("Paste the following into your terminal (Mac OSX only):"))
-    .append($("<textarea wrap='off' rows='10' style='overflow: auto; width: 100%'/>").val(
+  $("#packageCreateShellCode").val(
     "echo -n " + base64contents + " | pbcopy;\n" +
     "mkdir -p packages/" + packageDirName + ";\n" +
     "cd packages/" + packageDirName + ";\n" +
     "pbpaste | base64 -D > tmp.zip;\n" +
     "unzip tmp.zip; rm tmp.zip; cd ../..; \n" +
     "meteor add " + packageViewModel.fullPackageName() + "\n"
-  ));
-  $(window).scrollTop(2000);
-  window.location = "data:application/zip;base64," + base64contents;
+  );
 }

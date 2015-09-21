@@ -5,7 +5,7 @@
       {{> Template.dynamic template="package-kitchen-editor" }}
       <div id="source">
         <hr>
-        <button type="button" class="btn btn-primary download">Create Package</button>
+        <button type="button" class="btn btn-primary download" data-toggle="modal" data-target="#myModal">Create Package</button>
         <button type="button" class="btn btn-primary saveToApp">Save Package to App</button>
 
         {{> Template.dynamic template="package-kitchen-allFiles" }}
@@ -13,4 +13,23 @@
     </div>
   </div>
   {{> Template.dynamic template="package-kitchen-flair" }}
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Create Meteor Package</h4>
+      </div>
+      <div class="modal-body">
+        <div>Paste the following into your terminal to create your pacakges (Mac OSX only):</div>
+        <textarea wrap='off' rows='10' style='overflow: auto; width: 100%' id="packageCreateShellCode">
+        </textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 </template>
