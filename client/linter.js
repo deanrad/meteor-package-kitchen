@@ -7,7 +7,7 @@ Template["package-kitchen-linter"].events({
       var packageJsCode = $("#packageJsToLint").val();
       Meteor.promise("getPackageModel", packageJsCode)
         .then(function(model){ window.packageModel = model; logObj(model)});
-        
+
       Meteor.promise("getLintErrors", packageJsCode)
         .then(function (errs) {
           errs.forEach(function (err) { LintErrors.insert(err); });

@@ -29,7 +29,7 @@ PackageModel = function PackageModel (packageJsCodeHopefully) {
       };
     },
     use: function (nameAndVersion, arch, options) {
-      if( _.isObject(arch)){ // passing options as the 2nd param, omitting arch
+      if( _.isObject(arch) && ! _.isArray(arch)){ // passing options as the 2nd param, omitting arch
         options=arch; arch = undefined;
       }
       var packageNamesAndVersions = _.isArray(nameAndVersion) ? nameAndVersion : Array(nameAndVersion);
@@ -38,7 +38,7 @@ PackageModel = function PackageModel (packageJsCodeHopefully) {
         var section = packageModel[mockApi.depType(nameAndVersion) + "Deps"];
         var versionInfo = mockApi.parseNameAndVersion(nameAndVersion);
         section.uses[versionInfo.name] = _.extend(versionInfo, {
-          arch: arch && Array(arch),
+          arch: _.isArray(arch) ? arch : (arch && Array(arch)),
           options: options
         });
       });
