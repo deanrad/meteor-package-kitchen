@@ -10,7 +10,10 @@ Template["package-kitchen-linter"].events({
 
       Meteor.promise("okgrow:package-linter#getLintErrors", packageJsCode)
         .then(function (errs) {
-          errs.forEach(function (err) { LintErrors.insert(err); });
+          if(errs.length === 0)
+            LintErrors.insert({error: "No errors detected!"})
+          else
+            errs.forEach(function (err) { LintErrors.insert(err); });
         })
         .then(logObj)
   }
