@@ -19,7 +19,6 @@ okgrow:promise
 okgrow:analytics
 perak:markdown
 manuel:viewmodel
-aldeed:tabular
 
+okgrow:package-linter
 deanius:package-kitchen
-deanius:package-linter
