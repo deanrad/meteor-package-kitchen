@@ -7,9 +7,7 @@ Package.describe({
 });
 
 Npm.depends({
-  "mkdirp": "0.5.0",
-  "latest-version": "1.0.0",
-  "ddp": "0.11.0"
+  "mkdirp": "0.5.0"
 });
 
 Package.onUse(function(api) {

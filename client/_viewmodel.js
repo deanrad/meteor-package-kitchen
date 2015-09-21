@@ -16,9 +16,10 @@ packageModel = {
   packagesWithVersions: function () {
     var self = this;
 
+    //XXX these are called more than they should since we invalidate as we go
     self.packageDeps().forEach(function (name){
       if( name.indexOf(":") == -1 ) return; //only for 3rd party deps
-      Meteor.promise("deanius:package-kitchen#latest-meteor-version", name).then(function (version){
+      Meteor.promise("okgrow:package-linter#latestMeteorVersionOfPackage", name).then(function (version){
         if (!version) return;
         _meteorVersions.set(name, version);
       })
@@ -73,7 +74,7 @@ packageModel = {
     }, {});
 
     self.npmDeps().forEach(function (name){
-      Meteor.promise("deanius:package-kitchen#latest-version", name).then(function (version){
+      Meteor.promise("okgrow:package-linter#latestNpmVersionOfPackage", name).then(function (version){
         if (!version) return;
         _npmVersions.set(name, version);
       })

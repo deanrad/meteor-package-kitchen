@@ -5,10 +5,10 @@ Template["package-kitchen-linter"].events({
   'click #lintIt' : function () {
       LintErrors.remove({});
       var packageJsCode = $("#packageJsToLint").val();
-      Meteor.promise("getPackageModel", packageJsCode)
+      Meteor.promise("okgrow:package-linter#getPackageModel", packageJsCode)
         .then(function(model){ window.packageModel = model; logObj(model)});
 
-      Meteor.promise("getLintErrors", packageJsCode)
+      Meteor.promise("okgrow:package-linter#getLintErrors", packageJsCode)
         .then(function (errs) {
           errs.forEach(function (err) { LintErrors.insert(err); });
         })
