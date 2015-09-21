@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "cd example && open 'http://localhost:3141/kitchen' && meteor --port 3141 --settings settings.json",
+    "start": "cd example && meteor --port 3141 --settings settings.json",
     "shell": "cd example && meteor shell",
     "test": "meteor test-packages ./",
     "dev-mode": "rm -rf example/packages/deanius\\:package-kitchen; mkdir -p example/packages; ln -s ../.. example/packages/deanius\\:package-kitchen",
