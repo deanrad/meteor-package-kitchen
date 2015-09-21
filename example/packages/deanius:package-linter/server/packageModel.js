@@ -12,7 +12,8 @@ PackageModel = function PackageModel (packageJsCodeHopefully) {
       uses: {},
       implies: {}
     },
-    files: {}
+    files: {},
+    exports: {}
   };
 
   var mockApi = {
@@ -28,11 +29,17 @@ PackageModel = function PackageModel (packageJsCodeHopefully) {
       };
     },
     use: function (nameAndVersion, arch, options) {
-      var section = packageModel[this.depType(nameAndVersion) + "Deps"];
-      var versionInfo = this.parseNameAndVersion(nameAndVersion);
-      section.uses[versionInfo.name] = _.extend(versionInfo, {
-        arch: arch && Array(arch),
-        options: options
+      var packageNamesAndVersions = _.isArray(nameAndVersion) ? nameAndVersion : Array(nameAndVersion);
+      packageNamesAndVersions.forEach(function (nameAndVersion) {
+        var section = packageModel[mockApi.depType(nameAndVersion) + "Deps"];
+        var versionInfo = mockApi.parseNameAndVersion(nameAndVersion);
+        if( _.isObject(arch)){ // passing options as the 2nd param, omitting arch
+          options=arch; arch = undefined;
+        }
+        section.uses[versionInfo.name] = _.extend(versionInfo, {
+          arch: arch && Array(arch),
+          options: options
+        });
       });
     },
     imply: function (nameAndVersion, arch, options) {
@@ -47,6 +54,11 @@ PackageModel = function PackageModel (packageJsCodeHopefully) {
     },
     versionsFrom: function(versionsFrom) {
       packageModel.versionsFrom = versionsFrom;
+    },
+    export: function(exportedName, arch) {
+      packageModel.exports[exportedName] = _.extend({}, {
+        arch: arch && Array(arch)
+      })
     }
   };
 

@@ -15,7 +15,7 @@ Package.onUse(function(api) {
   api.use("ddp");
   api.use("okgrow:promise@=0.9.3", "client");
 
-  // look, ma, no version declared: 
+  // look, ma, no version declared:
   api.use("okgrow:router-autoscroll", ["client", "server"], {weak: true});
 
   api.imply("http");
@@ -38,5 +38,7 @@ Package.onTest(function (api) {
   <h2>Lint Errors Detected:</h2>
   {{#each lintErrors}}
   {{code}}:{{offender}}:{{severity}}:{{error}}
+  {{else}}
+  No errors detected (have you run the test?)
   {{/each}}
 </template>
