@@ -31,7 +31,7 @@ packageModel = {
       return versionByName ? name + "@" + versionByName : name;
     });
   },
-  meteorVersion: "1.1.0.3",
+  meteorVersion: "1.2.0.1",
   npmDepsString: "", // comma-separated
   npmDeps: function () {
     if(this.npmDepsString()==="") return [];

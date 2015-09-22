@@ -14,7 +14,18 @@ Template['package-kitchen-editor'].helpers({
   }
 })
 
-Template['package-kitchen-editor'].onRendered( function () {
+Template['package-kitchen-editor'].onRendered(detectNewMeteorPackage);
+Template['package-kitchen-editor'].onRendered(function(){
+    window.packageModel = packageModel;
+    window.packageViewModel = ViewModel.byId("packageModel");
+});
+
+
+// because exports aren't exported with debugOnly package
+Template['package-kitchen-editor'].onRendered()
+
+
+function detectNewMeteorPackage () {
   $("#addNewPackageDep").on('submit', function (e) {
     e.preventDefault();
     var $pkg = $("input[name=addNewPackageDep]");
@@ -22,10 +33,4 @@ Template['package-kitchen-editor'].onRendered( function () {
     packageViewModel.packageDeps().push(packageName);
     $pkg.val('');
   });
-});
-
-// because exports aren't exported with debugOnly package
-Template['package-kitchen-editor'].onRendered(function(){
-  window.packageModel = packageModel;
-  window.packageViewModel = ViewModel.byId("packageModel");
-})
+}
