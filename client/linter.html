@@ -12,10 +12,37 @@
   <h2>Lint Errors:</h2>
   <ul>
   {{#each lintErrors}}
-  <li>{{code}} : {{offender}} : {{severity}} : {{error}}</li>
+  <li>{{code}} : {{offender}} : {{severity}} : {{error}} : {{details}}</li>
   {{/each}}
   </ul>
 
+  <button id="fixIt" data-toggle="modal" data-target="#lintFixModal">Fix It</button>
+
+</div>
+
+<div class="modal fade" id="lintFixModal" tabindex="-1" role="dialog" aria-labelledby="lintFixModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="lintFixModalLabel">Package.JS</h4>
+      </div>
+      <div class="modal-body">
+        <div>Try updating your package with this Code (No warranties !):</div>
+        <textarea wrap='off' rows='10' style='overflow: auto; width: 100%' id="packageJSFixedCode">
+        </textarea>
+        <div>Lint errors addressed:
+          <ul>
+            <li><b>2.2:</b> Suggesting the newest version of a deprecated dependency.</li>
+            <li><b>2.3:</b> Suggesting the newest version of a dependency that is at least a minor version behind.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 </template>
