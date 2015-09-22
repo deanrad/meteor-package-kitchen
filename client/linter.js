@@ -40,7 +40,8 @@ Template["package-kitchen-linter"].events({
     replacements.forEach(function (replaceArgs) {
       packageJsCode = "".replace.apply(packageJsCode, replaceArgs);
     })
-    $("#packageJSFixedCode").val(packageJsCode);
+    $("#packageJSFixedCode").val(packageJsCode +
+    "\n  /* Package updated by okgrow:package-linter */\n");
   }
 });
 
