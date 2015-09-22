@@ -25,11 +25,13 @@ Template['package-kitchen-editor'].onRendered()
 
 
 function detectNewMeteorPackage () {
-  $("#addNewPackageDep").on('submit', function (e) {
+  function submitMeteorDepName (e) {
     e.preventDefault();
     var $pkg = $("input[name=addNewPackageDep]");
     var packageName = $pkg.val();
     packageViewModel.meteorDepNames().push(packageName);
     $pkg.val('');
-  });
+  }
+  $("#submitMeteorDepName").on('click', submitMeteorDepName)
+  $("#addNewPackageDep").on('submit', submitMeteorDepName);
 }
