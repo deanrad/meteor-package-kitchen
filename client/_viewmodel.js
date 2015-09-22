@@ -138,12 +138,12 @@ packageModel = {
   allFiles: function () {
     return [
       {
-        path: "README.md",
-        template: Template.readme
-      },
-      {
         path: "package.js",
         template: Template.packageJs
+      },
+      {
+        path: "README.md",
+        template: Template.readme
       }
     ]
     .concat(this.apiFiles())
