@@ -14,15 +14,16 @@ Template['package-kitchen-editor'].helpers({
   }
 })
 
-Template['package-kitchen-editor'].onRendered(detectNewMeteorPackage);
-Template['package-kitchen-editor'].onRendered(function(){
-    window.packageModel = packageModel;
-    window.packageViewModel = ViewModel.byId("packageModel");
-});
+function exposeVars () {
+  window.packageModel = packageModel;
+  window.packageViewModel = ViewModel.byId("packageModel");
+}
 
-// because exports aren't exported with debugOnly package
-Template['package-kitchen-editor'].onRendered()
-
+function activateButtons () {
+  $('.btnNext').click(function(){
+    $('.tab-content > .active').next('li').find('a').trigger('click');
+  });
+}
 
 function detectNewMeteorPackage () {
   function submitMeteorDepName (e) {
@@ -35,3 +36,8 @@ function detectNewMeteorPackage () {
   $("#submitMeteorDepName").on('click', submitMeteorDepName)
   $("#addNewPackageDep").on('submit', submitMeteorDepName);
 }
+
+[exposeVars, detectNewMeteorPackage,
+  activateButtons].forEach(function (fn) {
+  Template['package-kitchen-editor'].onRendered(fn);
+})
