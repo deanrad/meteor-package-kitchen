@@ -7,4 +7,7 @@ if (Meteor.isClient){
   Template['package-kitchen-editor'].onRendered(function getValuesFromSession () {
     //XXX TODO getValuesFromSession
   });
+  // Template['package-kitchen-editor'].onRendered(function(){
+  //     window.packageViewModel = ViewModel.byId("packageModel");
+  // });
 }

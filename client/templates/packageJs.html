@@ -10,7 +10,7 @@ Package.onUse(function(api) {
   api.versionsFrom("{{ meteorVersion }}");
 
   // Core packages and 3rd party packages
-  {{#each packagesWithVersions}}api.use("{{ . }}");
+  {{#each meteorDepNamesWithVersions}}api.use("{{ . }}");
   {{/each}}
 
   // The files of this package{{> apiFiles }}

@@ -12,20 +12,11 @@ packageModel = {
   "export": "log",
 
   packageType: "shared", // client, server, or shared
-  packageDeps: ["ddp", "tracker"],
-  packagesWithVersions: function () {
+  meteorDepNames: ["ddp", "tracker"],
+  meteorDepNamesWithVersions: function () {
     var self = this;
 
-    //XXX these are called more than they should since we invalidate as we go
-    self.packageDeps().forEach(function (name){
-      if( name.indexOf(":") == -1 ) return; //only for 3rd party deps
-      Meteor.promise("okgrow:package-linter#latestMeteorVersionOfPackage", name).then(function (version){
-        if (!version) return;
-        _meteorVersions.set(name, version);
-      })
-    });
-
-    return self.packageDeps().map(function(name){
+    return self.meteorDepNames().map(function(name){
       var versionByName = _meteorVersions.get(name);
 
       return versionByName ? name + "@" + versionByName : name;
@@ -33,10 +24,6 @@ packageModel = {
   },
   meteorVersion: "1.2.0.1",
   npmDepsString: "", // comma-separated
-  npmDeps: function () {
-    if(this.npmDepsString()==="") return [];
-    return this.npmDepsString().split(/\s*,\s*/);
-  },
 
   testFramework: "tinytest", // tinytest, mocha, ""
   code: "/* global log:true */\nlog = console.log.bind(console);",
@@ -53,11 +40,16 @@ packageModel = {
     return "https://github.com/" + this.gitProject();
   },
 
+  npmDepNames: function () {
+    if(this.npmDepsString()==="") return [];
+    return this.npmDepsString().split(/\s*,\s*/);
+  },
+
   npmVersions: function () {
-    if(this.npmDeps().length === 0) return null;
+    if(this.npmDepNames().length === 0) return null;
     if( Object.keys(_npmVersions.keys).length > 0) return _npmVersions;
 
-    this.npmDeps().forEach(function (name) {
+    this.npmDepNames().forEach(function (name) {
       _npmVersions.set(name, "latest");
     });
     return _npmVersions;
@@ -65,15 +57,15 @@ packageModel = {
 
   npmDependencies: function () {
     var self = this;
-    if(self.npmDeps().length === 0) return null;
+    if(self.npmDepNames().length === 0) return null;
 
-    var npmBlock = self.npmDeps().reduce(function (all, name){
+    var npmBlock = self.npmDepNames().reduce(function (all, name){
       var version = self.npmVersions().get(name);
       all[name] = version;
       return all;
     }, {});
 
-    self.npmDeps().forEach(function (name){
+    self.npmDepNames().forEach(function (name){
       Meteor.promise("okgrow:package-linter#latestNpmVersionOfPackage", name).then(function (version){
         if (!version) return;
         _npmVersions.set(name, version);
@@ -177,7 +169,33 @@ packageModel = {
   exportSuggestion: function () {
     var match = this.code().match(/^(\w+)\s?=/m);
     return match ? match[1] : "";
+  },
+
+  autorun: function () {
+    var self = this;
+    self.meteorDepNames().list().forEach(function (name){
+      if (name.indexOf(":") === -1) return;
+
+
+      savedName = _meteorVersions.get(name);
+      if( !savedName || savedName===""){
+        _meteorVersions.set(name, "");
+        Meteor.promise("okgrow:package-linter#latestMeteorVersionOfPackage", name)
+          .then(function (version){
+            _meteorVersions.set(name, version);
+          });
+      }});
+  },
+
+  clearVersions: function () {
+    for (var key in _meteorVersions.keys){
+      _meteorVersions.set(key, undefined)
+    }
+    for (var key in _npmVersions.keys){
+      _npmVersions.set(key, undefined)
+    }
   }
 };
 
 Template["package-kitchen-editor"].viewmodel("packageModel", packageModel);
+window.packageModel = packageModel;
